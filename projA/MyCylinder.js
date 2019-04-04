@@ -1,19 +1,19 @@
 /**
-* MyPrism
+* MyCylinder
 * @constructor
 */
-class MyPrism extends CGFobject {
+class MyCylinder extends CGFobject {
     constructor(scene, slices, stacks) {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
         this.initBuffers();
     }
-
     initBuffers() {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
+        this.texCoords = [];
 
         var ang = 0;
         var alphaAng = 2*Math.PI/this.slices;
@@ -35,27 +35,34 @@ class MyPrism extends CGFobject {
             this.vertices.push(caa, 2, -saa);//3
 
             // triangle normal computed by cross product of two edges
-            var normal= [
+           var normal= [
                 saa-sa,
-                ca*saa-sa*caa,
+                0,
                 caa-ca
             ];
 
+            this.normals.push(ca, 0, -sa);//1
+            this.normals.push(ca, 2, -sa);//2
+            this.normals.push(caa, 0, -saa);//4
+            this.normals.push(caa, 2, -saa);//3
+
             // normalization
             var nsize=Math.sqrt(
-                normal[0]*normal[0]+
-                normal[1]*normal[1]+
-                normal[2]*normal[2]
+                this.normals[0]*this.normals[0]+
+                this.normals[1]*this.normals[1]+
+                this.normals[2]*this.normals[2]+
+                this.normals[3]*this.normals[3]
                 );
-            normal[0]/=nsize;
-            normal[1]/=nsize;
-            normal[2]/=nsize;
+            this.normals[0]/=nsize;
+            this.normals[1]/=nsize;
+            this.normals[2]/=nsize;
+            this.normals[3]/=nsize;
 
-            // push normal once for each vertex of this triangle
+            /*// push normal once for each vertex of this triangle
             this.normals.push(...normal);
             this.normals.push(...normal);
             this.normals.push(...normal);
-            this.normals.push(...normal);
+            this.normals.push(...normal);*/
 
             this.indices.push(4*i+2, (4*i+1) , (4*i+0) );
             this.indices.push(4*i+2, (4*i+3) , (4*i+1) );
@@ -81,5 +88,3 @@ class MyPrism extends CGFobject {
         this.initNormalVizBuffers();
     }
 }
-
-
