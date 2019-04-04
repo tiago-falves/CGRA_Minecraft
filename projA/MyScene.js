@@ -24,12 +24,17 @@ class MyScene extends CGFscene {
         this.prism = new MyPrism(this, 4, 4);
         this.cylinder = new MyCylinder(this, 4, 4);
         this.house = new MyHouse(this);
+        this.tree = new MyTree(this, 2, 1, 2.5, 1);
 
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.displayMyPrism = true;
         this.displayMyCylinder = true;
         this.displayMyHouse = true;
+        this.displayMyTree = true;
+
+    
+        
     }
     initLights() {
         this.setGlobalAmbientLight(0.3, 0.3, 0.3, 1.0);
@@ -77,6 +82,7 @@ class MyScene extends CGFscene {
         if (this.displayMyHouse)
             this.house.display();
 
+        this.tree.display();
         // ---- END Primitive drawing section
     }
 }
