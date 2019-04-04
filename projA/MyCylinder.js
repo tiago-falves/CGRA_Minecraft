@@ -3,10 +3,12 @@
 * @constructor
 */
 class MyCylinder extends CGFobject {
-    constructor(scene, slices, stacks) {
+    constructor(scene, slices, stacks, height, radius) {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
+        this.height = height;
+        this.radius = radius;
         this.initBuffers();
     }
     initBuffers() {
@@ -29,10 +31,10 @@ class MyCylinder extends CGFobject {
             var caa=Math.cos(ang+alphaAng);
 
            
-            this.vertices.push(ca, 0, -sa);//1
-            this.vertices.push(ca, 2, -sa);//2
-            this.vertices.push(caa, 0, -saa);//4
-            this.vertices.push(caa, 2, -saa);//3
+            this.vertices.push(radius*ca, 0, radius*-sa);//1
+            this.vertices.push(radius*ca, height, radius*-sa);//2
+            this.vertices.push(radius*caa, 0, radius*-saa);//4
+            this.vertices.push(radius*caa, height, radius*-saa);//3
 
             // triangle normal computed by cross product of two edges
            var normal= [
