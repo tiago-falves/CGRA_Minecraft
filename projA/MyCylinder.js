@@ -9,9 +9,9 @@ class MyCylinder extends CGFobject {
         this.stacks = stacks;
         this.height = height;
         this.radius = radius;
-        this.initBuffers();
+        this.initBuffers(height, radius);
     }
-    initBuffers() {
+    initBuffers(height, radius) {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
@@ -72,11 +72,6 @@ class MyCylinder extends CGFobject {
 
             ang+=alphaAng;
         }
-
-        console.log(this.indices);
-
-        console.log(this.vertices);
-
 
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();

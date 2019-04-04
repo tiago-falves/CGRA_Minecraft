@@ -3,13 +3,15 @@
 * @constructor
 */
 class MyCone extends CGFobject {
-    constructor(scene, slices, stacks) {
+    constructor(scene, slices, stacks, height, radius) {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
-        this.initBuffers();
+        this.height = height;
+        this.radius = radius
+        this.initBuffers(height, radius);
     }
-    initBuffers() {
+    initBuffers(height, radius) {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
@@ -19,12 +21,12 @@ class MyCone extends CGFobject {
 
         for(var i = 0; i < this.slices; i++){
 
-            this.vertices.push(Math.cos(ang), 0, -Math.sin(ang));
+            this.vertices.push(radius*Math.cos(ang), 0, radius*-Math.sin(ang));
             this.indices.push(i, (i+1) % this.slices, this.slices);
             this.normals.push(Math.cos(ang), Math.cos(Math.PI/4.0), -Math.sin(ang));
             ang+=alphaAng;
         }
-        this.vertices.push(0,1,0);
+        this.vertices.push(0,height,0);
         this.normals.push(0,1,0);
 
 
@@ -40,5 +42,8 @@ class MyCone extends CGFobject {
         this.initNormalVizBuffers();
     }
 }
+
+
+
 
 

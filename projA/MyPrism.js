@@ -9,7 +9,7 @@ class MyPrism extends CGFobject {
         this.stacks = stacks;
         this.height = height;
         this.radius = radius;
-        this.initBuffers(this.height, this.radius);
+        this.initBuffers(height, radius);
     }
 
     initBuffers(height, radius) {
@@ -65,11 +65,6 @@ class MyPrism extends CGFobject {
 
             ang+=alphaAng;
         }
-
-        console.log(this.indices);
-
-        console.log(this.vertices);
-
 
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
