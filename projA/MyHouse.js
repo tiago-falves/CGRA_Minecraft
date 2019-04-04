@@ -9,7 +9,7 @@ class MyHouse extends CGFobject {
 		//Initialize scene objects
         this.cube = new MyUnitCubeQuad(scene);
         this.pyramid = new MyPyramid(scene, 4, 4);
-        this.prism = new MyPrism(scene,4,4);
+        this.prism = new MyPrism(scene, 4, 4);
         
         //Objects connected to MyInterface
         this.displayMyUnitCubeQuad= true;
@@ -31,16 +31,27 @@ class MyHouse extends CGFobject {
     
     display()
     {
-        console.log
+      
 
-        // Quad Transformation
+        // Cube Transformation
         this.scene.pushMatrix();
-        this.scene.scale(1,1,1); 
-        this.cube.display();
-        this.scene.popMatrix();                                              
+        this.scene.scale(2,2,2); 
+        if (this.displayMyUnitCubeQuad)
+            this.cube.display();
+        this.scene.popMatrix();  
+
+        //Pyramid Transformation
+        this.scene.pushMatrix();
+        this.scene.scale(2,2,2); 
+        this.scene.rotate(0,45*Math.PI/180,0,1);
+        this.scene.translate(0,0.5,0);
+        if(this.displayMyPyramid)
+            this.pyramid.display();
+        this.scene.popMatrix();
         
-        this.prism.display();
-        this.pyramid.display();
+        if (this.displayMyPrism)
+            this.prism.display();
+        
       
     }
 }
