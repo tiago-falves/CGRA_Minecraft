@@ -3,13 +3,15 @@
 * @constructor
 */
 class MyPyramid extends CGFobject {
-    constructor(scene, slices, stacks) {
+    constructor(scene, slices, stacks, height,sideLenght) {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
-        this.initBuffers();
+        this.height = height;
+        this.sideLenght = sideLenght;
+        this.initBuffers(height,sideLenght);
     }
-    initBuffers() {
+    initBuffers(height,sideLenght) {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
@@ -27,9 +29,9 @@ class MyPyramid extends CGFobject {
             var ca=Math.cos(ang);
             var caa=Math.cos(ang+alphaAng);
 
-            this.vertices.push(0,1,0);
-            this.vertices.push(ca, 0, -sa);
-            this.vertices.push(caa, 0, -saa);
+            this.vertices.push(0,height,0);
+            this.vertices.push(sideLenght* ca, 0,sideLenght* -sa);
+            this.vertices.push( sideLenght* caa, 0,sideLenght* -saa);
 
             // triangle normal computed by cross product of two edges
             var normal= [
