@@ -10,6 +10,7 @@ class MyCylinder extends CGFobject {
         this.height = height;
         this.radius = radius;
         this.initBuffers(height, radius);
+
     }
     initBuffers(height, radius) {
         this.vertices = [];
@@ -19,6 +20,17 @@ class MyCylinder extends CGFobject {
 
         var ang = 0;
         var alphaAng = 2*Math.PI/this.slices;
+
+        this.vertices.push(radius, 0, 0);
+        this.vertices.push(radius, height, 0);
+
+        this.normals.push(radius, 0, 0);
+        this.normals.push(radius,0 ,0);
+
+        this.texCoords.push(0, 1);
+        this.texCoords.push(0, 0);
+
+        ang += alphaAng;
 
         for(var i = 0; i < this.slices; i++){
             // All vertices have to be declared for a given face
@@ -30,48 +42,24 @@ class MyCylinder extends CGFobject {
             var ca=Math.cos(ang);
             var caa=Math.cos(ang+alphaAng);
 
-           
             this.vertices.push(radius*ca, 0, radius*-sa);//1
             this.vertices.push(radius*ca, height, radius*-sa);//2
-            this.vertices.push(radius*caa, 0, radius*-saa);//4
-            this.vertices.push(radius*caa, height, radius*-saa);//3
-
-            // triangle normal computed by cross product of two edges
-           var normal= [
-                saa-sa,
-                0,
-                caa-ca
-            ];
-
+ 
             this.normals.push(ca, 0, -sa);//1
-            this.normals.push(ca, 2, -sa);//2
-            this.normals.push(caa, 0, -saa);//4
-            this.normals.push(caa, 2, -saa);//3
+            this.normals.push(ca, 0, -sa);//2
+  
+            //Texture Coordinates
+            this.texCoords.push(i*(1/this.slices)+1/this.slices,1);
+            this.texCoords.push(i*(1/this.slices)+1/this.slices,0);
 
-            // normalization
-            var nsize=Math.sqrt(
-                this.normals[0]*this.normals[0]+
-                this.normals[1]*this.normals[1]+
-                this.normals[2]*this.normals[2]+
-                this.normals[3]*this.normals[3]
-                );
-            this.normals[0]/=nsize;
-            this.normals[1]/=nsize;
-            this.normals[2]/=nsize;
-            this.normals[3]/=nsize;
-
-            /*// push normal once for each vertex of this triangle
-            this.normals.push(...normal);
-            this.normals.push(...normal);
-            this.normals.push(...normal);
-            this.normals.push(...normal);*/
-
-            this.indices.push(4*i+2, (4*i+1) , (4*i+0) );
-            this.indices.push(4*i+2, (4*i+3) , (4*i+1) );
+            this.indices.push(2*i+2, (2*i+1) , (2*i+0) );
+            this.indices.push(2*i+2, (2*i+3) , (2*i+1) );
             
 
             ang+=alphaAng;
         }
+
+        console.log(this.texCoords);
 
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();

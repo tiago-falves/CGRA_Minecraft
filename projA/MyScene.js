@@ -21,20 +21,26 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.prism = new MyPrism(this, 4, 4);
-        this.cylinder = new MyCylinder(this, 4, 4);
-        this.house = new MyHouse(this);
-        //this.tree = new MyTree(this, 2, 1, 2.5, 1);
+        this.prism = new MyPrism(this, 4, 4, 2 , 2);
+        this.cylinder = new MyCylinder(this, 20, 4, 2, 2);
+        //this.house = new MyHouse(this);
+        this.tree = new MyTree(this, 2, 1, 2.5, 1);
 
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.displayMyPrism = true;
         this.displayMyCylinder = true;
         this.displayMyHouse = true;
-        //this.displayMyTree = true;
+        this.displayMyTree = true;
 
-    
-        
+         //Testing Material to use to test TexCoords
+        this.testingMaterial = new CGFappearance(this);
+        this.testingMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.testingMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.testingMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.testingMaterial.setShininess(10.0);
+        this.testingMaterial.loadTexture('images/tangram.png');
+        this.testingMaterial.setTextureWrap('REPEAT', 'REPEAT');
     }
     initLights() {
         this.setGlobalAmbientLight(0.3, 0.3, 0.3, 1.0);
@@ -73,10 +79,14 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
        
 
-        if (this.displayMyHouse)
+        /*if (this.displayMyHouse)
             this.house.display();
+*/
 
-        //this.tree.display();
+        //this.testingMaterial.apply();
+     
+       // this.cylinder.display();
+        this.tree.display();
         // ---- END Primitive drawing section
     }
 }
