@@ -36,8 +36,7 @@ class MyHouse extends CGFobject {
 
         this.scene.scale(2, 2, 2); 
 
-        if (this.displayMyUnitCubeQuad)
-            this.cube.display();
+        this.cube.display();
 
         this.scene.popMatrix();  
 
@@ -50,8 +49,7 @@ class MyHouse extends CGFobject {
 
         this.scene.translate(0, 0.5, 0);
 
-        if(this.displayMyPyramid)
-            this.pyramid.display();
+        this.pyramid.display();
 
         this.scene.popMatrix();
 
@@ -60,8 +58,8 @@ class MyHouse extends CGFobject {
         this.scene.pushMatrix();
 
         this.scene.translate(1.5, -1, 1.5);
-        if (this.displayMyPrism)
-            this.prism.display();
+
+        this.prism.display();
         
         this.scene.popMatrix();
         
@@ -71,8 +69,7 @@ class MyHouse extends CGFobject {
 
         this.scene.translate(-1.5, -1, 1.5);
 
-        if (this.displayMyPrism)
-            this.prism.display();
+        this.prism.display();
 
         this.scene.popMatrix();
 
@@ -82,8 +79,7 @@ class MyHouse extends CGFobject {
 
         this.scene.translate(-1.5, -1, -1.5);
 
-        if (this.displayMyPrism)
-            this.prism.display();
+        this.prism.display();
 
         this.scene.popMatrix();
         
@@ -93,8 +89,7 @@ class MyHouse extends CGFobject {
 
         this.scene.translate(1.5, -1, 1.5);
 
-        if (this.displayMyPrism)
-            this.prism.display();
+        this.prism.display();
         
         this.scene.popMatrix();
         
