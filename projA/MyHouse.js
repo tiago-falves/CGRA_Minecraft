@@ -7,7 +7,7 @@ class MyHouse extends CGFobject {
 	constructor(scene) {
         super(scene);
 		//Initialize scene objects
-        this.cube = new MyUnitCubeQuad(scene,'images/wood-house.jpg','images/exterior-wall-of-a-stone-house.jpg','images/exterior-wall-of-a-stone-house.jpg','images/exterior-wall-of-a-stone-house.jpg','images/exterior-wall-of-a-stone-house.jpg','images/exterior-wall-of-a-stone-house.jpg');
+        this.cube = new MyUnitCubeQuad(scene,'images/wood-house-door.jpg','images/wood-house.jpg','images/wood-house-window.jpg','images/wood-house-window.jpg','images/wood-house.jpg','images/wood-house.jpg');
         this.pyramid = new MyPyramid(scene, 4, 4,1,1.5);
         this.prism = new MyPrism(scene, 8, 1,2,0.2);
         
