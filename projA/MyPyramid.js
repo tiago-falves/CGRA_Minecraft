@@ -17,6 +17,7 @@ class MyPyramid extends CGFobject {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
+        this.texCoords = [];
 
         var ang = 0;
         var alphaAng = 2 * Math.PI / this.slices;
@@ -34,6 +35,10 @@ class MyPyramid extends CGFobject {
             this.vertices.push(0,height,0);
             this.vertices.push(sideLenght* ca, 0,sideLenght* -sa);
             this.vertices.push( sideLenght* caa, 0,sideLenght* -saa);
+
+            this.texCoords.push(0.5, 0.5);
+            this.texCoords.push(0.5 - 0.5 * Math.tan(alphaAng / 2), 1);
+            this.texCoords.push(0.5 + 0.5 * Math.cos(alphaAng / 2), 1);
 
             // triangle normal computed by cross product of two edges
             var normal= [
@@ -61,6 +66,8 @@ class MyPyramid extends CGFobject {
 
             ang+=alphaAng;
         }
+
+        console.log(this.texCoords);
 
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();

@@ -52,8 +52,8 @@ class MyCylinder extends CGFobject {
             this.normals.push(ca, 0, -sa);//2
   
             //Texture Coordinates
-            this.texCoords.push(i*(1/this.slices)+1/this.slices,1);
-            this.texCoords.push(i*(1/this.slices)+1/this.slices,0);
+            this.texCoords.push(i * (1 / this.slices) + 1 / this.slices, 1);
+            this.texCoords.push(i * (1 / this.slices) + 1 / this.slices, 0);
 
             this.indices.push(2*i+2, (2*i+1) , (2*i+0) );
             this.indices.push(2*i+2, (2*i+3) , (2*i+1) );

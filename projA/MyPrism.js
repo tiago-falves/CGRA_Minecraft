@@ -21,6 +21,8 @@ class MyPrism extends CGFobject {
         var ang = 0;
         var alphaAng = 2*Math.PI/this.slices;
 
+        
+
         for(var i = 0; i < this.slices; i++){
             // All vertices have to be declared for a given face
             // even if they are shared with others, as the normals 
@@ -37,6 +39,14 @@ class MyPrism extends CGFobject {
             this.vertices.push(radius*caa, 0, radius*-saa);//4
             this.vertices.push(radius*caa, height, radius*-saa);//3
 
+           //Texture Coordinates
+            this.texCoords.push(i * (1 / this.slices), 1);
+            this.texCoords.push(i * (1 / this.slices), 0);
+            this.texCoords.push(i * (1 / this.slices) + 1 / this.slices, 1);
+            this.texCoords.push(i * (1 / this.slices) + 1 / this.slices, 0);
+
+
+           
             // triangle normal computed by cross product of two edges
             var normal= [
                 saa-sa,

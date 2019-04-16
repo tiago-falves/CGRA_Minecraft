@@ -3,7 +3,7 @@
  * @constructor
  * @param scene - Reference to MyScene object
  */
-class MyUnitCube extends CGFobject {
+class MyCubeMap extends CGFobject {
 	constructor(scene) {
 		super(scene);
 		this.initBuffers();
