@@ -44,7 +44,7 @@ class MyTreeGroupPatch extends CGFobject {
 
             this.scene.pushMatrix();
 
-            this.scene.translate(row*2.5 - 2.5 + desilignement_values[i], 0, line*2.5 - 2.5 + desilignement_values[8-i]);
+            this.scene.translate(row*4.5 - 4.5 + desilignement_values[i], 0, line*4.5 - 4.5 + desilignement_values[8-i]);
             
             trees[i].display();
 

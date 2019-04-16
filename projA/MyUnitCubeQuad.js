@@ -25,7 +25,7 @@ class MyUnitCubeQuad extends CGFobject {
 
         this.scene.rotate(-Math.PI/2, 1.0, 0.0, 0.0);
 
-        this.topMaterial.apply();
+      
  
         this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
 
@@ -40,7 +40,6 @@ class MyUnitCubeQuad extends CGFobject {
 
         this.scene.rotate(Math.PI, 1.0, 0.0, 0.0);
 
-        this.sideMaterial.apply();
 
         this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
 
@@ -86,7 +85,7 @@ class MyUnitCubeQuad extends CGFobject {
 
         this.scene.rotate(Math.PI/2, 1.0, 0.0, 0.0);
 
-        this.bottomMaterial.apply();
+       
 
         this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
 

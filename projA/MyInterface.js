@@ -20,6 +20,10 @@ class MyInterface extends CGFinterface {
          this.gui.add(this.scene, 'displayMyHouse').name('Display MyHouse');
          this.gui.add(this.scene, 'displayMyTree').name('Display MyTree');
          this.gui.add(this.scene, 'displayMyVoxelHill').name('Display MyVoxelHill');
+         this.gui.add(this.scene, 'displayTreeRowPatch').name('Display MyTreeRowPatch');
+         this.gui.add(this.scene, 'displayTreeGroupPatch').name('Display MyTreeGroupPatch');
+
+
         
         return true;
     }

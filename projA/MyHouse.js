@@ -87,7 +87,7 @@ class MyHouse extends CGFobject {
         
         this.scene.pushMatrix();
 
-        this.scene.translate(1.5, -1, 1.5);
+        this.scene.translate(1.5, -1, -1.5);
 
         this.prism.display();
         

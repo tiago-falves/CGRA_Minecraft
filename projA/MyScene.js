@@ -25,14 +25,18 @@ class MyScene extends CGFscene {
         //this.prism = new MyPrism(this, 4, 4, 2 , 2);
         //this.cylinder = new MyCylinder(this, 20, 4, 2, 2);
         this.tree = new MyTree(this, 2, 1, 2.5, 1);
-        this.treePatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
-        this.voxelHill = new MyVoxelHill(this,15);
+        this.treeRowPatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
+        this.treeGroupPatch = new MyTreeGroupPatch(this, 1.5, 0.25, 1.5, 1);
+        this.voxelHill = new MyVoxelHill(this,3);
 
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.displayMyHouse = true;
         this.displayMyTree = true;
         this.displayMyVoxelHill = true;
+        this.displayTreeGroupPatch = true;
+        this.displayTreeRowPatch = true;
+
         
 
          //Testing Material to use to test TexCoords
@@ -80,12 +84,17 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
        
-        this.treePatch.display();
+        if(this.displayTreeRowPatch)
+            this.treeRowPatch.display();
         //this.tree.display();
+
+        if(this.displayTreeGroupPatch)
+            this.treeGroupPatch.display();
+
         if (this.displayMyHouse)
             this.house.display();
           
-        this.testingMaterial.apply();
+        //this.testingMaterial.apply();
      
        if(this.displayMyTree)
             this.tree.display();
