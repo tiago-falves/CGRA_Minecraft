@@ -28,7 +28,6 @@ class MyScene extends CGFscene {
         this.treePatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
         this.voxelHill = new MyVoxelHill(this,15);
 
-
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.displayMyHouse = true;
