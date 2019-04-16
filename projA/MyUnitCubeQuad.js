@@ -1,5 +1,5 @@
 /**
- * MyDiamond
+ * MyUnitCubeQuad
  * @constructor
  * @param scene - Reference to MyScene object
  */
@@ -14,33 +14,6 @@ class MyUnitCubeQuad extends CGFobject {
         this.backQuad = new MyQuad(this.scene);
         this.topQuad = new MyQuad(this.scene);
         this.bottomQuad = new MyQuad(this.scene);
-
-        //Side Material for MyUnitCubeQuad
-        this.sideMaterial = new CGFappearance(this.scene);
-        this.sideMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.sideMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.sideMaterial.setSpecular(0.1, 0.1, 0.1, 1);
-        this.sideMaterial.setShininess(10.0);
-        this.sideMaterial.loadTexture('images/mineSide.png');
-        this.sideMaterial.setTextureWrap('REPEAT', 'REPEAT');
-
-        //Top Material for MyUnitCubeQuad
-        this.topMaterial = new CGFappearance(this.scene);
-        this.topMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.topMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.topMaterial.setSpecular(0.1, 0.1, 0.1, 1);
-        this.topMaterial.setShininess(10.0);
-        this.topMaterial.loadTexture('images/mineTop.png');
-        this.topMaterial.setTextureWrap('REPEAT', 'REPEAT');
-
-        //Bottom Material for MyUnitCubeQuad
-        this.bottomMaterial = new CGFappearance(this.scene);
-        this.bottomMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.bottomMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.bottomMaterial.setSpecular(0.1, 0.1, 0.1, 1);
-        this.bottomMaterial.setShininess(10.0);
-        this.bottomMaterial.loadTexture('images/mineBottom.png');
-        this.bottomMaterial.setTextureWrap('REPEAT', 'REPEAT');
 	}
     
     display() {
