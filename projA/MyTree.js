@@ -22,7 +22,7 @@ class MyTree extends CGFobject {
 
         //Trunk Displaying
         this.trunk.display();
-    
+        
         //Cone Displaying
         this.scene.pushMatrix();
 
