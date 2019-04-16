@@ -26,7 +26,7 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this);
         //this.prism = new MyPrism(this, 4, 4, 2 , 2);
         //this.cylinder = new MyCylinder(this, 20, 4, 2, 2);
-        this.tree = new MyTree(this, 2, 1, 2.5, 1);
+        this.tree = new MyTree(this, 2, 1, 2.5, 1,'images/treeCrown.PNG','images/trunk.jpg');
         this.treeRowPatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
         this.treeGroupPatch = new MyTreeGroupPatch(this, 1.5, 0.25, 1.5, 1);
         this.voxelHill = new MyVoxelHill(this,3);
