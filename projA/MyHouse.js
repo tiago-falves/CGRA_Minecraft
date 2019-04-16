@@ -25,8 +25,6 @@ class MyHouse extends CGFobject {
 		this.materialGreen.setDiffuse(0.215, 0.988, 0.113, 1.0);
 		this.materialGreen.setSpecular(0.215, 0.988, 0.113, 1.0);
         this.materialGreen.setShininess(10.0);
-
-		
     }
     
     display()
@@ -35,47 +33,70 @@ class MyHouse extends CGFobject {
 
         // Cube Transformation
         this.scene.pushMatrix();
-        this.scene.scale(2,2,2); 
+
+        this.scene.scale(2, 2, 2); 
+
         if (this.displayMyUnitCubeQuad)
             this.cube.display();
+
         this.scene.popMatrix();  
 
         //Pyramid Transformation
         this.scene.pushMatrix();
+
         this.scene.scale(2,2,2); 
-        this.scene.rotate(45*Math.PI/180,0,1,0);
-        this.scene.translate(0,0.5,0);
+
+        this.scene.rotate(45*Math.PI/180, 0, 1, 0);
+
+        this.scene.translate(0, 0.5, 0);
+
         if(this.displayMyPyramid)
             this.pyramid.display();
+
         this.scene.popMatrix();
 
         // Column 1
 
         this.scene.pushMatrix();
-        this.scene.translate(1.5,-1,1.5);
+
+        this.scene.translate(1.5, -1, 1.5);
         if (this.displayMyPrism)
             this.prism.display();
+        
+        this.scene.popMatrix();
         
         // Column 2
         
         this.scene.pushMatrix();
-        this.scene.translate(-3,0,0);
+
+        this.scene.translate(-1.5, -1, 1.5);
+
         if (this.displayMyPrism)
             this.prism.display();
+
+        this.scene.popMatrix();
 
         // Column 3
         
         this.scene.pushMatrix();
-        this.scene.translate(0,0,-3);
+
+        this.scene.translate(-1.5, -1, -1.5);
+
         if (this.displayMyPrism)
             this.prism.display();
+
+        this.scene.popMatrix();
         
         // Column 4
         
         this.scene.pushMatrix();
-        this.scene.translate(3,0,0);
+
+        this.scene.translate(1.5, -1, 1.5);
+
         if (this.displayMyPrism)
             this.prism.display();
+        
+        this.scene.popMatrix();
         
     }
 }
