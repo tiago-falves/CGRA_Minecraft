@@ -7,7 +7,7 @@ class MyHouse extends CGFobject {
 	constructor(scene) {
         super(scene);
 		//Initialize scene objects
-        this.cube = new MyUnitCubeQuad(scene);
+        this.cube = new MyUnitCubeQuad(scene,'images/wood-house.jpg','images/exterior-wall-of-a-stone-house.jpg','images/exterior-wall-of-a-stone-house.jpg','images/exterior-wall-of-a-stone-house.jpg','images/exterior-wall-of-a-stone-house.jpg','images/exterior-wall-of-a-stone-house.jpg');
         this.pyramid = new MyPyramid(scene, 4, 4,1,1.5);
         this.prism = new MyPrism(scene, 8, 1,2,0.2);
         
@@ -20,24 +20,26 @@ class MyHouse extends CGFobject {
     }
     
     initMaterials() {
-		this.materialGreen = new CGFappearance(this.scene);
-		this.materialGreen.setAmbient(0.0, 0.0, 0.0, 1.0);
-		this.materialGreen.setDiffuse(0.215, 0.988, 0.113, 1.0);
-		this.materialGreen.setSpecular(0.215, 0.988, 0.113, 1.0);
-        this.materialGreen.setShininess(10.0);
+        this.sideMaterial = new CGFappearance(this.scene);
+        this.sideMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.sideMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.sideMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.sideMaterial.setShininess(10.0);
+        this.sideMaterial.loadTexture('exterior-wall-of-a-stone-house.jpg');
+        this.sideMaterial.setTextureWrap('REPEAT', 'REPEAT');
+		
     }
     
     display()
     {
+
       
 
         // Cube Transformation
         this.scene.pushMatrix();
-
         this.scene.scale(2, 2, 2); 
-
+        //this.sideMaterial.apply();
         this.cube.display();
-
         this.scene.popMatrix();  
 
         //Pyramid Transformation

@@ -11,13 +11,15 @@ class MyScene extends CGFscene {
         this.initCameras();
         this.initLights();
 
+        this.enableTex = true;
+
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
-
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
+        this.enableTextures(this.enableTex);
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
@@ -40,13 +42,13 @@ class MyScene extends CGFscene {
         
 
          //Testing Material to use to test TexCoords
-        this.testingMaterial = new CGFappearance(this);
+        /*this.testingMaterial = new CGFappearance(this);
         this.testingMaterial.setAmbient(0.1, 0.1, 0.1, 1);
         this.testingMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
         this.testingMaterial.setSpecular(0.1, 0.1, 0.1, 1);
         this.testingMaterial.setShininess(10.0);
         this.testingMaterial.loadTexture('images/test.jpg');
-        this.testingMaterial.setTextureWrap('REPEAT', 'REPEAT');
+        this.testingMaterial.setTextureWrap('REPEAT', 'REPEAT');*/
     }
     initLights() {
         this.setGlobalAmbientLight(0.3, 0.3, 0.3, 1.0);
@@ -74,19 +76,18 @@ class MyScene extends CGFscene {
         this.loadIdentity();
         // Apply transformations corresponding to the camera position relative to the origin
         this.applyViewMatrix();
-
         // Draw axis
         if (this.displayAxis)
             this.axis.display();
 
         //Apply default appearance
-       // this.setDefaultAppearance();
+        //this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
        
         if(this.displayTreeRowPatch)
             this.treeRowPatch.display();
-        //this.tree.display();
+        
 
         if(this.displayTreeGroupPatch)
             this.treeGroupPatch.display();
@@ -94,7 +95,6 @@ class MyScene extends CGFscene {
         if (this.displayMyHouse)
             this.house.display();
           
-        //this.testingMaterial.apply();
      
        if(this.displayMyTree)
             this.tree.display();
