@@ -25,13 +25,10 @@ class MyScene extends CGFscene {
         //this.prism = new MyPrism(this, 4, 4, 2 , 2);
         //this.cylinder = new MyCylinder(this, 20, 4, 2, 2);
         this.tree = new MyTree(this, 2, 1, 2.5, 1);
-<<<<<<< HEAD
         this.treePatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
-=======
         this.voxelHill = new MyVoxelHill(this,15);
         
        
->>>>>>> e2ad510a9ab993703727c6b0476ba8cb8041249b
 
         //Objects connected to MyInterface
         this.displayAxis = true;
@@ -88,27 +85,17 @@ class MyScene extends CGFscene {
 
         this.treePatch.display();
         //this.tree.display();
-       /* if (this.displayMyHouse)
+        if (this.displayMyHouse)
             this.house.display();
-<<<<<<< HEAD
-
-    
-      
-=======
             
->>>>>>> e2ad510a9ab993703727c6b0476ba8cb8041249b
         this.testingMaterial.apply();
      
        // this.cylinder.display();
        if(this.displayMyTree)
             this.tree.display();
 
-<<<<<<< HEAD
-        this.cylinder.display();*/
-=======
         if(this.displayMyVoxelHill)
             this.voxelHill.display();
->>>>>>> e2ad510a9ab993703727c6b0476ba8cb8041249b
         // ---- END Primitive drawing section
     }
 }
