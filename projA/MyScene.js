@@ -11,37 +11,34 @@ class MyScene extends CGFscene {
         this.initCameras();
         this.initLights();
 
+        this.enableTex = true;
+
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
-
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
+        this.enableTextures(this.enableTex);
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.house = new MyHouse(this);
+        //this.prism = new MyPrism(this, 4, 4, 2 , 2);
+        //this.cylinder = new MyCylinder(this, 20, 4, 2, 2);
+        this.tree = new MyTree(this, 2, 1, 2.5, 1,'images/treeCrown.PNG','images/trunk.jpg');
         this.treeRowPatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
         this.treeGroupPatch = new MyTreeGroupPatch(this, 1.5, 0.25, 1.5, 1);
         this.voxelHill = new MyVoxelHill(this,3);
-        this.cubeMap = new MyCubeMap(this);
 
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.displayMyHouse = true;
         this.displayMyTree = true;
         this.displayMyVoxelHill = true;
-        
+        this.displayTreeGroupPatch = true;
+        this.displayTreeRowPatch = true;
 
-         //Testing Material to use to test TexCoords
-        this.testingMaterial = new CGFappearance(this);
-        this.testingMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.testingMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.testingMaterial.setSpecular(0.1, 0.1, 0.1, 1);
-        this.testingMaterial.setShininess(10.0);
-        this.testingMaterial.loadTexture('images/test.jpg');
-        this.testingMaterial.setTextureWrap('REPEAT', 'REPEAT');
     }
     initLights() {
         this.setGlobalAmbientLight(0.3, 0.3, 0.3, 1.0);
@@ -69,25 +66,30 @@ class MyScene extends CGFscene {
         this.loadIdentity();
         // Apply transformations corresponding to the camera position relative to the origin
         this.applyViewMatrix();
-
         // Draw axis
         if (this.displayAxis)
             this.axis.display();
 
         //Apply default appearance
-        this.setDefaultAppearance();
+        //this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
        
+        if(this.displayTreeRowPatch)
+            this.treeRowPatch.display();
+        
 
-       this.treeRowPatch.display();
+        if(this.displayTreeGroupPatch)
+            this.treeGroupPatch.display();
 
         if (this.displayMyHouse)
             this.house.display();
+          
+     
+       if(this.displayMyTree)
+            this.tree.display();
 
         if(this.displayMyVoxelHill)
             this.voxelHill.display();
-
-        // ---- END Primitive drawing section
     }
 }

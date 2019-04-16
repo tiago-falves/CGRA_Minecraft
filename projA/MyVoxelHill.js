@@ -10,7 +10,7 @@ class MyVoxelHill extends CGFobject {
         this.levels = levels;
 
         //Initialize MyUnitCubeQuad objects
-        this.cube = new MyUnitCubeQuad(this.scene);
+        this.cube = new MyUnitCubeQuad(this.scene,'images/hill.jpg','images/hill.jpg','images/hill.jpg','images/hill.jpg','images/hill.jpg','images/hill.jpg');
               
 	}
 
@@ -27,7 +27,7 @@ class MyVoxelHill extends CGFobject {
                 this.scene.pushMatrix();
 
                 this.scene.translate(i + 1 + this.initialPosition, this.initialPosition, -this.initialPosition);
-
+                
                 this.cube.display();
 
                 this.scene.popMatrix();
