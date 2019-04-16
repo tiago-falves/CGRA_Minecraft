@@ -12,6 +12,7 @@ class MyCylinder extends CGFobject {
         this.initBuffers(height, radius);
 
     }
+    
     initBuffers(height, radius) {
         this.vertices = [];
         this.indices = [];

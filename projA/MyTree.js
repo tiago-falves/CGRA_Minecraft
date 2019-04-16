@@ -4,18 +4,14 @@
 */
 
 class MyTree extends CGFobject {
-    constructor(scene, trunkHeight, trunkRadius, treeTopHeight, treeTopRadius,leavesTexture,truncTexture){
+    constructor(scene, trunkHeight, trunkRadius, treeTopHeight, treeTopRadius, treeTopTexture, truncTexture){
         super(scene);
         this.trunkHeight = trunkHeight;
         this.trunkRadius = trunkRadius;
         this.treeTopHeight = treeTopHeight;
         this.treeTopRadius = treeTopRadius;
-        this.leavesTexture = leavesTexture;
+        this.treeTopTexture = treeTopTexture;
         this.truncTexture = truncTexture;
-
-        
-        //this.treeTopTexture = treeTopTexture;
-        //this.trunkTexture = trunkTexture;
 
         //Initializing MyTree Objects
         this.trunk = new MyCylinder(this.scene, 10, 10, trunkHeight, 0.5);
@@ -23,13 +19,14 @@ class MyTree extends CGFobject {
         this.initMaterials();
     }
     initMaterials() {
+
         //Texture Leaves
         this.leavesMaterial = new CGFappearance(this.scene);
         this.leavesMaterial.setAmbient(0.1, 0.1, 0.1, 1);
         this.leavesMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
         this.leavesMaterial.setSpecular(0.1, 0.1, 0.1, 1);
         this.leavesMaterial.setShininess(10.0);
-        this.leavesMaterial.loadTexture(this.leavesTexture); 
+        this.leavesMaterial.loadTexture(this.treeTopTexture); 
         this.leavesMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         //Texture Leaves
@@ -46,17 +43,23 @@ class MyTree extends CGFobject {
     display(){
 
         //Trunk Displaying
-        this.scene.pushMatrix()
+        this.scene.pushMatrix();
+        
         this.trunkMaterial.apply();
+        
         this.trunk.display();
-
+        
         this.scene.popMatrix();
         
         //Cone Displaying
         this.scene.pushMatrix();
+        
         this.scene.translate(0, this.trunkHeight, 0);
+        
         this.leavesMaterial.apply();
+        
         this.cone.display();
+        
         this.scene.popMatrix();
         
     }

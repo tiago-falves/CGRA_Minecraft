@@ -3,7 +3,7 @@
 * @constructor
 */
 class MyCone extends CGFobject {
-    constructor(scene, slices, stacks, height, radius,textureCone) { //
+    constructor(scene, slices, stacks, height, radius, textureCone) { //
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
@@ -11,7 +11,6 @@ class MyCone extends CGFobject {
         this.radius = radius;
         this.initBuffers(height, radius);
     }
-
     
     initBuffers(height, radius) {
         this.vertices = [];

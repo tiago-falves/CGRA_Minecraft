@@ -39,16 +39,6 @@ class MyScene extends CGFscene {
         this.displayTreeGroupPatch = true;
         this.displayTreeRowPatch = true;
 
-        
-
-         //Testing Material to use to test TexCoords
-        /*this.testingMaterial = new CGFappearance(this);
-        this.testingMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.testingMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.testingMaterial.setSpecular(0.1, 0.1, 0.1, 1);
-        this.testingMaterial.setShininess(10.0);
-        this.testingMaterial.loadTexture('images/test.jpg');
-        this.testingMaterial.setTextureWrap('REPEAT', 'REPEAT');*/
     }
     initLights() {
         this.setGlobalAmbientLight(0.3, 0.3, 0.3, 1.0);
