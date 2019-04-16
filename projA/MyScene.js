@@ -27,6 +27,7 @@ class MyScene extends CGFscene {
         this.treeRowPatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
         this.treeGroupPatch = new MyTreeGroupPatch(this, 1.5, 0.25, 1.5, 1);
         this.voxelHill = new MyVoxelHill(this,3);
+        this.cubeMap = new MyCubeMap(this);
 
         //Objects connected to MyInterface
         this.displayAxis = true;
@@ -35,6 +36,7 @@ class MyScene extends CGFscene {
         this.displayMyVoxelHill = true;
         this.displayTreeGroupPatch = true;
         this.displayTreeRowPatch = true;
+        this.displayCubeMap = true;
 
     }
     initLights() {
@@ -85,5 +87,7 @@ class MyScene extends CGFscene {
         if(this.displayMyVoxelHill)
             this.voxelHill.display();
 
+        if(this.displayCubeMap)
+            this.cubeMap.display();
     }
 }
