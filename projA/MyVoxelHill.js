@@ -10,7 +10,7 @@ class MyVoxelHill extends CGFobject {
         this.levels = levels;
 
         //Initialize MyUnitCubeQuad objects
-        this.cube = new MyUnitCubeQuad(this.scene,'images/hill.jpg','images/hill.jpg','images/hill.jpg','images/hill.jpg','images/hill.jpg','images/hill.jpg');
+        this.cube = new MyUnitCubeQuad(this.scene, 'images/hill.jpg', 'images/hill.jpg', 'images/hill.jpg', 'images/hill.jpg', 'images/hill.jpg', 'images/hill.jpg');
               
 	}
 

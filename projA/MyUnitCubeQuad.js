@@ -4,7 +4,7 @@
  * @param scene - Reference to MyScene object
  */
 class MyUnitCubeQuad extends CGFobject {
-	constructor(scene,frontTexture,backTexture,leftTexture,rightTexture,topTexture,bottomTexture) {
+	constructor(scene, frontTexture, backTexture, leftTexture, rightTexture, topTexture, bottomTexture) {
         super(scene);
                 
         //Initialize MyUnitCubeQuad objects
@@ -86,7 +86,6 @@ class MyUnitCubeQuad extends CGFobject {
 
         //Displaying Top Quad
         this.scene.pushMatrix();
-
         this.scene.translate(0.0, 0.5, 0.0);
         this.scene.rotate(-Math.PI/2, 1.0, 0.0, 0.0);
         this.topMaterial.apply();

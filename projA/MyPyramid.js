@@ -3,7 +3,7 @@
 * @constructor
 */
 class MyPyramid extends CGFobject {
-    constructor(scene, slices, stacks, height,sideLenght,sideTexture) {
+    constructor(scene, slices, stacks, height, sideLenght, sideTexture) {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
@@ -12,13 +12,14 @@ class MyPyramid extends CGFobject {
         this.sideTexture = sideTexture;
         this.initBuffers(height,sideLenght);
     }
+
     initBuffers(height,sideLenght) {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
 
         var ang = 0;
-        var alphaAng = 2*Math.PI/this.slices;
+        var alphaAng = 2 * Math.PI / this.slices;
 
         for(var i = 0; i < this.slices; i++){
             // All vertices have to be declared for a given face
@@ -26,9 +27,9 @@ class MyPyramid extends CGFobject {
             // in each face will be different
 
             var sa=Math.sin(ang);
-            var saa=Math.sin(ang+alphaAng);
+            var saa=Math.sin(ang + alphaAng);
             var ca=Math.cos(ang);
-            var caa=Math.cos(ang+alphaAng);
+            var caa=Math.cos(ang + alphaAng);
 
             this.vertices.push(0,height,0);
             this.vertices.push(sideLenght* ca, 0,sideLenght* -sa);

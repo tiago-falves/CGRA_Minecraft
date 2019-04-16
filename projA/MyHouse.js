@@ -7,9 +7,9 @@ class MyHouse extends CGFobject {
 	constructor(scene) {
         super(scene);
 		//Initialize scene objects
-        this.cube = new MyUnitCubeQuad(scene,'images/wood-house-door.jpg','images/wood-house.jpg','images/wood-house-window.jpg','images/wood-house-window.jpg','images/wood-house.jpg','images/wood-house.jpg');
-        this.pyramid = new MyPyramid(scene, 4, 4,1,1.5);
-        this.prism = new MyPrism(scene, 8, 1,2,0.2);
+        this.cube = new MyUnitCubeQuad(scene, 'images/wood-house-door.jpg', 'images/wood-house.jpg', 'images/wood-house-window.jpg', 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house.jpg');
+        this.pyramid = new MyPyramid(scene, 4, 4, 1, 1.5);
+        this.prism = new MyPrism(scene, 8, 1, 2, 0.2);
         
         //Objects connected to MyInterface
         this.displayMyUnitCubeQuad= true;
@@ -37,9 +37,13 @@ class MyHouse extends CGFobject {
 
         // Cube Transformation
         this.scene.pushMatrix();
+        
         this.scene.scale(2, 2, 2); 
+        
         //this.sideMaterial.apply();
+        
         this.cube.display();
+        
         this.scene.popMatrix();  
 
         //Pyramid Transformation
