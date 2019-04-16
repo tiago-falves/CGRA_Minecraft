@@ -37,7 +37,7 @@ class MyScene extends CGFscene {
         this.testingMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
         this.testingMaterial.setSpecular(0.1, 0.1, 0.1, 1);
         this.testingMaterial.setShininess(10.0);
-        this.testingMaterial.loadTexture('images/tangram.png');
+        this.testingMaterial.loadTexture('images/test.jpg');
         this.testingMaterial.setTextureWrap('REPEAT', 'REPEAT');
     }
     initLights() {
@@ -72,19 +72,17 @@ class MyScene extends CGFscene {
             this.axis.display();
 
         //Apply default appearance
-        this.setDefaultAppearance();
+       // this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
        
 
-        /*if (this.displayMyHouse)
+        if (this.displayMyHouse)
             this.house.display();
-*/
+      
+        this.testingMaterial.apply();
 
-        //this.testingMaterial.apply();
-     
-       // this.cylinder.display();
-        this.tree.display();
+        this.cylinder.display();
         // ---- END Primitive drawing section
     }
 }
