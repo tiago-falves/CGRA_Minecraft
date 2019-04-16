@@ -11,6 +11,7 @@ class MyCone extends CGFobject {
         this.radius = radius
         this.initBuffers(height, radius);
     }
+    
     initBuffers(height, radius) {
         this.vertices = [];
         this.indices = [];

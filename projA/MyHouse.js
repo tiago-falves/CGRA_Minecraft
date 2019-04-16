@@ -19,14 +19,6 @@ class MyHouse extends CGFobject {
 
     }
     
-    initMaterials() {
-		this.materialGreen = new CGFappearance(this.scene);
-		this.materialGreen.setAmbient(0.0, 0.0, 0.0, 1.0);
-		this.materialGreen.setDiffuse(0.215, 0.988, 0.113, 1.0);
-		this.materialGreen.setSpecular(0.215, 0.988, 0.113, 1.0);
-        this.materialGreen.setShininess(10.0);
-    }
-    
     display()
     {
       
