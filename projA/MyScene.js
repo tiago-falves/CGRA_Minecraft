@@ -45,6 +45,7 @@ class MyScene extends CGFscene {
         this.lightsType = ['Day Light', 'Night Light'];
 
         this.lightsId = { 'Day Light' : 0, 'Night Light' : 1};
+        this.initMaterials();
     }
 
     initCameras() {
@@ -58,6 +59,16 @@ class MyScene extends CGFscene {
         this.setShininess(10.0);
     }
 
+    initMaterials() {
+        //Front
+        this.terrainMaterial = new CGFappearance(this.scene);
+        this.terrainMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.terrainMaterial.setDiffuse(1, 1, 1, 1);
+        this.terrainMaterial.setSpecular(0, 0, 0, 1);
+        this.terrainMaterial.setShininess(10.0);
+        this.terrainMaterial.loadTexture('images/floor.jpg');
+        this.terrainMaterial.setTextureWrap('REPEAT', 'REPEAT');
+    }
 
 
     initLights() {
@@ -149,15 +160,20 @@ class MyScene extends CGFscene {
 
 
         //Displaying the Terrain Plain
-        this.pushMatrix();
 
+        this.scene.pushMatrix();
+        this.scene.translate(0.0, -0.5, 0.0);
+        this.scene.rotate(-Math.PI / 2, 1.0, 0.0, 0.0);
         this.scale(65, 65, 65);
-
-        this.rotate(-Math.PI/2, 1, 0 ,0);
-
+        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+        this.terrainMaterial.apply();
         this.terrain.display();
-
         this.popMatrix()
+        
+        
+        
+        
+        
        
         if(this.displayTreeRowPatch){
             //Displaying the First Tree Row
