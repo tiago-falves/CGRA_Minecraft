@@ -36,8 +36,7 @@ class MyHouse extends CGFobject {
     
 
         this.poolMaterial = new CGFappearance(this.scene);
-        this.poolMaterial.setAmbient(0.1, 0.1, 0.1, 1.0);
-        this.poolMaterial.setDiffuse(0.1, 0.1, 0.1, 1.0);
+        this.poolMaterial.setDiffuse(1, 1, 1, 1.0);
         this.poolMaterial.setSpecular(1, 1, 1, 1.0);
         this.poolMaterial.setShininess(10.0);
         this.poolMaterial.loadTexture('images/pool.jpg');

@@ -41,7 +41,7 @@ class MyScene extends CGFscene {
         this.displayTreeRowPatch = true;
         this.displayCubeMap = true;
         this.displayTerrain = true;
-        this.lightSelected = 0;
+        this.lightSelected = 'Day Light';
 
         this.lightsType = ['Day Light', 'Night Light'];
 
@@ -103,7 +103,7 @@ class MyScene extends CGFscene {
 
     chooseLights() {
 
-        if (this.lightsType[this.lightSelected] == 'Day Light') {
+        if (this.lightSelected == 'Day Light') {
             this.setGlobalAmbientLight(0.3, 0.3, 0.3, 1.0);
 
             this.lights[1].disable();
@@ -116,7 +116,7 @@ class MyScene extends CGFscene {
             this.lights[0].update();
         }
 
-        else if (this.lightsType[this.lightSelected] == 'Night Light') {
+        else if (this.lightSelected == 'Night Light') {
             this.setGlobalAmbientLight(0.6196, 0.6745, 0.898, 1.0);
 
             this.lights[0].disable();
@@ -132,7 +132,7 @@ class MyScene extends CGFscene {
     }
 
     updateLights(){
-        for (var i = 0; i < this.lights.length; i++){
+        for (var i = 0; i < 3; i++){
             this.lights[i].update();
         }
     }
@@ -158,7 +158,7 @@ class MyScene extends CGFscene {
             this.axis.display();
 
         //Update Lights
-        this.lights[this.lightSelected].update();
+        this.updateLights();
 
         // ---- BEGIN Primitive drawing section
 
@@ -283,7 +283,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
         
         //Displaying Map Cube if Day Light is Selected
-        if (this.lightSelected == 0){
+        if (this.lightSelected == 'Day Light'){
             this.pushMatrix();
 
             this.translate(0.0, 24, 0.0);
