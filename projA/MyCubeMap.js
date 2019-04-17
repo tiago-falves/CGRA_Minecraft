@@ -92,6 +92,7 @@ class MyCubeMap extends CGFobject {
         this.scene.scale(this.scale,this.scale,this.scale);
 
         //Displaying Top Quad
+
         this.scene.pushMatrix();
        
         this.scene.translate(0.0, 0.5, 0.0);
@@ -105,8 +106,10 @@ class MyCubeMap extends CGFobject {
         this.topQuad.display();
         
         this.scene.popMatrix();
-		
-		//Displaying Bottom Quad
+        
+        
+        //Displaying Bottom Quad
+        
 		this.scene.pushMatrix();
         
         this.scene.translate(0.0, -0.5, 0.0);
@@ -121,12 +124,12 @@ class MyCubeMap extends CGFobject {
         
         this.scene.popMatrix();
         
+
         //Displaying Back Quad
+
         this.scene.pushMatrix();
         
         this.scene.translate(0, 0, -0.5);
-        
-        //this.scene.rotate(Math.PI, 1.0, 0.0, 0.0);
         
         this.backMaterial.apply();
         
@@ -136,7 +139,9 @@ class MyCubeMap extends CGFobject {
         
         this.scene.popMatrix();
 
+
         //Displaying Left Quad
+
         this.scene.pushMatrix();
         
         this.scene.translate(-0.5 , 0, 0);
@@ -149,7 +154,9 @@ class MyCubeMap extends CGFobject {
         
         this.scene.popMatrix();
 
+
         //Displaying Right Quad
+
         this.scene.pushMatrix();
         
         this.scene.translate(0.5, 0, 0);
@@ -162,7 +169,9 @@ class MyCubeMap extends CGFobject {
         
         this.scene.popMatrix();
 
+
         //Displaying Front Quad
+        
         this.scene.pushMatrix();
         
         this.scene.translate(0.0, 0.0, 0.5);

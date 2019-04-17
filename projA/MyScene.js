@@ -138,21 +138,31 @@ class MyScene extends CGFscene {
     display() {
         // ---- BEGIN Background, camera and axis setup
         // Clear image and depth buffer everytime we update the scene
+
         this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
         this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
+
         // Initialize Model-View matrix as identity (no transformation
+
         this.updateProjectionMatrix();
         this.loadIdentity();
+
         // Apply transformations corresponding to the camera position relative to the origin
+
         this.applyViewMatrix();
 
+
+        //Enable Textures
+
         this.enableTextures(this.enableTex);
+        
+
+        //Draw Objects
+        
         // Draw axis
         if (this.displayAxis)
             this.axis.display();
 
-        //Apply default appearance
-        //this.setDefaultAppearance();
 
         //Update Lights
         this.lights[this.lightSelected].update();
@@ -173,11 +183,9 @@ class MyScene extends CGFscene {
         }
         
         
-        
-        
-        
-       
+        //Tree Row
         if(this.displayTreeRowPatch){
+
             //Displaying the First Tree Row
             this.pushMatrix();
             this.translate(0, 0, 24);
@@ -193,6 +201,7 @@ class MyScene extends CGFscene {
             this.popMatrix();
         }
     
+        //Tree Group
         if(this.displayTreeGroupPatch){
             //Displaying the First Tree Group
             this.pushMatrix();
@@ -218,65 +227,59 @@ class MyScene extends CGFscene {
             this.treeGroupPatch.display();
             this.popMatrix();
             
-            //Displaying the Fifth Trre Group
+            //Displaying the Fifth Tree Group
             this.pushMatrix();
             this.translate(19,0,15);
             this.treeGroupPatch.display();
             this.popMatrix();
         }
 
+        //Display House
         if (this.displayMyHouse){
-            this.pushMatrix();
 
-            this.translate(0, 1, 0)
-            
+            this.pushMatrix();
+            this.translate(0, 1, 0);
             this.house.display();
             this.popMatrix();
         }
 
+        //Display Voxel Hill
+
         if(this.displayMyVoxelHill){
             //Displaying the First Voxel Hill
+
             this.pushMatrix();
-            
             this.translate(25, 0, -25.0);
-            
             this.voxelHill_1.display();
-            
             this.popMatrix();
 
             //Displaying the Second Voxel Hill
+           
             this.pushMatrix();
-
             this.translate(-20, 0, 15);
-            
             this.voxelHill_1.display();
-            
             this.popMatrix();
 
             //Displaying the Third Voxel Hill
+
             this.pushMatrix();
-            
             this.translate(15, 0, 22);
-            
             this.voxelHill_2.display();
-            
             this.popMatrix();
         }
+
+        //Display Cube Map
 
         if(this.displayCubeMap){
             this.pushMatrix();
             this.translate(0.0, 24, 0.0);
             this.cubeMap.display();
             this.popMatrix();
-            
         }     
-        
+        //Display lantern
         this.pushMatrix();
-
         this.translate(3, 0 , 3);
-
         this.lantern.display();
-
         this.popMatrix();
     }
 }
