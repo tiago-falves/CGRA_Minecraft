@@ -26,8 +26,8 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this);
         this.treeRowPatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
         this.treeGroupPatch = new MyTreeGroupPatch(this, 1.5, 0.25, 1.5, 1);
-        this.voxelHill = new MyVoxelHill(this,3);
-        this.cubeMap = new MyCubeMap(this,10,'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/mp_deviladv/devils_advocate_dn.png');
+        this.voxelHill = new MyVoxelHill(this,4);
+        this.cubeMap = new MyCubeMap(this,30,'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/mp_deviladv/devils_advocate_dn.png');
 
         //Objects connected to MyInterface
         this.displayAxis = true;
@@ -74,20 +74,37 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
        
-        if(this.displayTreeRowPatch)
+        if(this.displayTreeRowPatch){
+            this.pushMatrix();
+            this.translate(15,-1, 0.0);
             this.treeRowPatch.display();
+            this.popMatrix();
+        }
+    
         
 
-        if(this.displayTreeGroupPatch)
+        if(this.displayTreeGroupPatch){
+            this.pushMatrix();
+            this.translate(0,-1, 0.0);
             this.treeGroupPatch.display();
-
+            this.popMatrix();
+        }
         if (this.displayMyHouse)
             this.house.display();
 
-        if(this.displayMyVoxelHill)
+        if(this.displayMyVoxelHill){
+            this.pushMatrix();
+            this.translate(5,-0.5, 5.0);
             this.voxelHill.display();
-
-        if(this.displayCubeMap)
+            this.popMatrix();
+        }
+        if(this.displayCubeMap){
+            this.pushMatrix();
+            this.translate(0.0,13, 0.0);
             this.cubeMap.display();
+            this.popMatrix();
+            
+        }
+            
     }
 }
