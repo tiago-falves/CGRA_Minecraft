@@ -25,9 +25,9 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this);
         this.treeRowPatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
         this.treeGroupPatch = new MyTreeGroupPatch(this, 1.5, 0.25, 1.5, 1);
-        this.voxelHill = new MyVoxelHill(this,7,'images/hill.jpg');
-        this.voxelHill1 = new MyVoxelHill(this,5,'images/hill2.jpg');
-
+        this.voxelHill_1 = new MyVoxelHill(this,7,'images/hill.jpg');
+        this.voxelHill_2 = new MyVoxelHill(this,5,'images/hill2.jpg');
+        this.lantern = new MyLantern(this);
         this.cubeMap = new MyCubeMap(this,50,'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/mp_deviladv/devils_advocate_dn.png');
 
         //Objects connected to MyInterface
@@ -220,7 +220,7 @@ class MyScene extends CGFscene {
             
             this.translate(10,-0.5, -15.0);
             
-            this.voxelHill.display();
+            this.voxelHill_1.display();
             
             this.popMatrix();
 
@@ -228,7 +228,7 @@ class MyScene extends CGFscene {
             
             this.translate(-20,-0.5, 15);
             
-            this.voxelHill.display();
+            this.voxelHill_1.display();
             
             this.popMatrix();
 
@@ -236,7 +236,7 @@ class MyScene extends CGFscene {
             
             this.translate(9,-0.5, 22);
             
-            this.voxelHill1.display();
+            this.voxelHill_2.display();
             
             this.popMatrix();
         }
@@ -250,6 +250,14 @@ class MyScene extends CGFscene {
             
             this.popMatrix();
             
-        }      
+        }     
+        
+        this.pushMatrix();
+
+        this.translate(3, 0 , 3);
+
+        this.lantern.display();
+
+        this.popMatrix();
     }
 }
