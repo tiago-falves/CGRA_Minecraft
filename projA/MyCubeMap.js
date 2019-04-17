@@ -4,7 +4,7 @@
  * @param scene - Reference to MyScene object
  */
 class MyCubeMap extends CGFobject {
-	constructor(scene,scale, frontTexture, backTexture, leftTexture, rightTexture, topTexture, bottomTexture) {
+	constructor(scene, scale, frontTexture, backTexture, leftTexture, rightTexture, topTexture, bottomTexture) {
         super(scene);
         
 		this.scale = scale;
