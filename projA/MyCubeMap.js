@@ -3,135 +3,142 @@
  * @constructor
  * @param scene - Reference to MyScene object
  */
-class MyUnitCube extends CGFobject {
-	constructor(scene) {
+class MyCubeMap extends CGFobject {
+	constructor(scene,scale, frontTexture, backTexture, leftTexture, rightTexture, topTexture, bottomTexture) {
 		super(scene);
-		this.initBuffers();
-	}
-	
-	initBuffers() {
-		this.vertices = [
-			0.5, -0.5, 0.5,   //1
-			-0.5, -0.5, 0.5,  //2
-			0.5, 0.5, 0.5,    //3
-			-0.5, 0.5, 0.5,   //4
-			0.5, -0.5, -0.5,  //5
-			0.5, 0.5, -0.5,   //6
-			-0.5, 0.5, -0.5,  //7
-			-0.5, -0.5, -0.5, //8
+		this.scale = scale;
+                
+        //Initialize MyUnitCubeQuad objects
+        this.frontQuad = new MyQuad(this.scene); //The Front Face of the cube is the one with positive Z value
+        this.leftQuad = new MyQuad(this.scene); //In relation to us, this is, the one with negative X value
+        this.rightQuad = new MyQuad(this.scene);
+        this.backQuad = new MyQuad(this.scene);
+        this.topQuad = new MyQuad(this.scene);
+        this.bottomQuad = new MyQuad(this.scene);
+        this.frontTexture = frontTexture;
+        this.backTexture = backTexture;
+        this.leftTexture = leftTexture;
+        this.rightTexture = rightTexture;
+        this.topTexture = topTexture;
+        this.bottomTexture = bottomTexture;
+        this.initMaterials();
+    
+    }
+    initMaterials() {
+        //Front
+        this.frontMaterial = new CGFappearance(this.scene);
+        this.frontMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.frontMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.frontMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.frontMaterial.setShininess(10.0);
+        this.frontMaterial.loadTexture(this.frontTexture);
+        this.frontMaterial.setTextureWrap('REPEAT', 'REPEAT');
+        
+        //Back
+        this.backMaterial = new CGFappearance(this.scene);
+        this.backMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.backMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.backMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.backMaterial.setShininess(10.0);
+        this.backMaterial.loadTexture(this.backTexture);
+        this.backMaterial.setTextureWrap('REPEAT', 'REPEAT');
+        
+        //Left
+        this.leftMaterial = new CGFappearance(this.scene);
+        this.leftMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.leftMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.leftMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.leftMaterial.setShininess(10.0);
+        this.leftMaterial.loadTexture(this.leftTexture);
+        this.leftMaterial.setTextureWrap('REPEAT', 'REPEAT');
+        
+        //Right
+        this.rightMaterial = new CGFappearance(this.scene);
+        this.rightMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.rightMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.rightMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.rightMaterial.setShininess(10.0);
+        this.rightMaterial.loadTexture(this.rightTexture);
+        this.rightMaterial.setTextureWrap('REPEAT', 'REPEAT');
+        
+        //Top
+        this.topMaterial = new CGFappearance(this.scene);
+        this.topMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.topMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.topMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.topMaterial.setShininess(10.0);
+        this.topMaterial.loadTexture(this.topTexture);
+        this.topMaterial.setTextureWrap('REPEAT', 'REPEAT');
+        
+        //Back
+        this.bottomMaterial = new CGFappearance(this.scene);
+        this.bottomMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.bottomMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.bottomMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.bottomMaterial.setShininess(10.0);
+        this.bottomMaterial.loadTexture(this.bottomTexture);
+        this.bottomMaterial.setTextureWrap('REPEAT', 'REPEAT');
+        
+        
+    }
+    
+    
+    display() {
+		this.scene.pushMatrix();
+        this.scene.scale(this.scale,this.scale,this.scale);
+        //Displaying Top Quad
+        this.scene.pushMatrix();
+        this.scene.translate(0.0, 0.5, 0.0);
+        this.scene.rotate(Math.PI/2, 1.0, 0.0, 0.0);
+        this.topMaterial.apply();
+        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+        this.topQuad.display();
+		this.scene.popMatrix();
+		
+		//Displaying Bottom Quad
+		this.scene.pushMatrix();
+		this.scene.translate(0.0, -0.5, 0.0);
+		this.scene.rotate(-Math.PI/2, 1.0, 0.0, 0.0);
+		this.bottomMaterial.apply();
+		this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+		this.bottomQuad.display();
+		this.scene.popMatrix();
+        //Displaying Back Quad
+        this.scene.pushMatrix();
+        this.scene.translate(0, 0, -0.5);
+        //this.scene.rotate(Math.PI, 1.0, 0.0, 0.0);
+        this.backMaterial.apply();
+        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+        this.backQuad.display();
+        this.scene.popMatrix();
 
-			0.5, -0.5, 0.5,   //1
-			-0.5, -0.5, 0.5,  //2
-			0.5, 0.5, 0.5,    //3
-			-0.5, 0.5, 0.5,   //4
-			0.5, -0.5, -0.5,  //5
-			0.5, 0.5, -0.5,   //6
-			-0.5, 0.5, -0.5,  //7
-			-0.5, -0.5, -0.5, //8
+        //Displaying Left Quad
+        this.scene.pushMatrix();
+        this.scene.translate(-0.5,0,0);
+        this.scene.rotate(Math.PI/2, 0.0, 1.0, 0.0);
+        this.leftMaterial.apply();
+        this.leftQuad.display();
+        this.scene.popMatrix();
 
-			0.5, -0.5, 0.5,   //1
-			-0.5, -0.5, 0.5,  //2
-			0.5, 0.5, 0.5,    //3
-			-0.5, 0.5, 0.5,   //4
-			0.5, -0.5, -0.5,  //5
-			0.5, 0.5, -0.5,   //6
-			-0.5, 0.5, -0.5,  //7
-			-0.5, -0.5, -0.5  //8
-			
-			
-		];
+        //Displaying Right Quad
+        this.scene.pushMatrix();
+        this.scene.translate(0.5,0,0);
+        this.scene.rotate(-Math.PI/2, 0.0, 1.0, 0.0);
+        this.rightMaterial.apply();
+        this.rightQuad.display();
+        this.scene.popMatrix();
 
-		this.texCoords = [
-			0, 0.66,     //1
-			0.25, 0.66,  //2
-			0, 0.33,     //3
-			0.25, 0.33,  //4
-			0.5, 0.66,   //5
-			0.5, 0.33,   //6
-			0.75, 0.33,  //7
-			0.75, 0.66,  //8
+        //Displaying Front Quad
+        this.scene.pushMatrix();
+		this.scene.translate(0.0, 0.0, 0.5);
+        this.scene.rotate(-Math.PI, 0, 1.0, 0.0);		
+        this.frontMaterial.apply();
+        this.frontQuad.display();
+        this.scene.popMatrix();
 
-			0.25, 1,     //1
-			0.25, 0.66,  //2
-			0.25, 0,     //3
-			0.25, 0.33,  //4
-			0.5, 0.66,   //5
-			0.5, 0.33,   //6
-			0.5, 0,      //7
-			0.5, 1,      //8
+		this.scene.popMatrix();
+       
 
-			1, 0.66,     //1
-			0.25, 0.66,  //2
-			1, 0.33,     //3
-			0.25, 0.33,  //4
-			0.5, 0.66,   //5
-			0.5, 0.33,   //6
-			0.75, 0.33,  //7
-			0.75, 0.66,  //8
-
-
-			
-		]
-
-		this.normals = [
-			-1, 0 ,0,
-			1, 0, 0,
-			-1, 0, 0,
-			1, 0, 0,
-			-1, 0, 0,
-			-1, 0, 0,
-			1, 0, 0,
-			1, 0, 0,
-
-			0, 1, 0,
-			0, 1, 0,
-			0, -1, 0,
-			0, -1, 0,
-			0, 1, 0,
-			0, -1, 0,
-			0, -1, 0,
-			0, 1, 0,
-
-			0, 0, -1,
-			0, 0, -1,
-			0, 0, -1,
-			0, 0, -1,
-			0, 0, 1,
-			0, 0, 1,
-			0, 0, 1,
-			0, 0, 1
-		]
-
-
-		//Counter-clockwise reference of vertices
-		this.indices = [
-			1, 2, 0,
-			2, 1, 3,
-
-			4, 0, 2,
-			4, 2, 5,
-
-			5, 2, 3,
-			5, 3, 6,
-
-			3, 7, 6,
-			7, 3, 1,/*
-			6, 7, 3,
-			1, 3, 7,*/
-
-			5, 6, 7,
-			5, 7, 4,/*
-			7, 6, 5,
-			4, 7, 5,*/
-
-			1, 4, 7,
-			1, 0, 4/*
-			7, 4, 1,
-			4, 0, 1*/
-
-		];
-		this.primitiveType = this.scene.gl.TRIANGLES;
-		this.initGLBuffers();
-	}
+    }
 }
 

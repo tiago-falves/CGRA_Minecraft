@@ -28,7 +28,7 @@ class MyScene extends CGFscene {
         this.treeRowPatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
         this.treeGroupPatch = new MyTreeGroupPatch(this, 1.5, 0.25, 1.5, 1);
         this.voxelHill = new MyVoxelHill(this,3);
-        this.cubeMap = new MyCubeMap(this);
+        this.cubeMap = new MyCubeMap(this,10,'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/mp_deviladv/devils_advocate_dn.png');
 
         //Objects connected to MyInterface
         this.displayAxis = true;
