@@ -25,10 +25,11 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this);
         this.treeRowPatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
         this.treeGroupPatch = new MyTreeGroupPatch(this, 1.5, 0.25, 1.5, 1);
-        this.voxelHill_1 = new MyVoxelHill(this,7,'images/hill.jpg');
-        this.voxelHill_2 = new MyVoxelHill(this,5,'images/hill2.jpg');
+        this.voxelHill_1 = new MyVoxelHill(this, 7,'images/hill.jpg');
+        this.voxelHill_2 = new MyVoxelHill(this, 5,'images/hill2.jpg');
         this.lantern = new MyLantern(this);
-        this.cubeMap = new MyCubeMap(this,50,'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/mp_deviladv/devils_advocate_dn.png');
+        this.cubeMap = new MyCubeMap(this, 65, 'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/mp_deviladv/devils_advocate_dn.png');
+        this.terrain = new MyQuad(this);
 
         //Objects connected to MyInterface
         this.displayAxis = true;
@@ -47,7 +48,7 @@ class MyScene extends CGFscene {
     }
 
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(30, 30, 30), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(30, 50, 30), vec3.fromValues(0, 0, 0));
     }
 
     setDefaultAppearance() {
@@ -145,43 +146,63 @@ class MyScene extends CGFscene {
         //Update Lights
         this.lights[this.lightSelected].update();
         // ---- BEGIN Primitive drawing section
+
+
+        //Displaying the Terrain Plain
+        this.pushMatrix();
+
+        this.scale(65, 65, 65);
+
+        this.rotate(-Math.PI/2, 1, 0 ,0);
+
+        this.terrain.display();
+
+        this.popMatrix()
        
         if(this.displayTreeRowPatch){
+            //Displaying the First Tree Row
             this.pushMatrix();
-            this.translate(10,-1, 0.0);
+            this.translate(0, 0, 24);
+            this.rotate(Math.PI/2, 0, 1, 0);
             this.treeRowPatch.display();
             this.popMatrix();
 
+            //Displaying the Second Tree Row
             this.pushMatrix();
-            this.translate(0,-1, -10.0);
-            this.rotate(90*Math.PI/180,0,1,0);
+            this.translate(0, 0, 20);
+            this.rotate(Math.PI/2, 0, 1, 0);
             this.treeRowPatch.display();
             this.popMatrix();
         }
     
         if(this.displayTreeGroupPatch){
+            //Displaying the First Tree Group
             this.pushMatrix();
-            this.translate(-0,-1, -18);
+            this.translate(0, 0, -18);
             this.treeGroupPatch.display();
             this.popMatrix();
 
+            //Displaying the Second Tree Group
             this.pushMatrix();
-            this.translate(-14,-1, -8);
+            this.translate(-15,0, -8);
             this.treeGroupPatch.display();
             this.popMatrix();
 
+            //Displaying the Third Tree Group
             this.pushMatrix();
-            this.translate(-12,-1, -18);
+            this.translate(-20,0, -18);
             this.treeGroupPatch.display();
             this.popMatrix();
 
+            //Displaying the Forth Tree Group
             this.pushMatrix();
-            this.translate(19,-1, -9);
+            this.translate(19,0, 0);
             this.treeGroupPatch.display();
             this.popMatrix();
-
+            
+            //Displaying the Fifth Trre Group
             this.pushMatrix();
-            this.translate(19,-1,3);
+            this.translate(19,0,15);
             this.treeGroupPatch.display();
             this.popMatrix();
         }
@@ -189,31 +210,35 @@ class MyScene extends CGFscene {
         if (this.displayMyHouse){
             this.pushMatrix();
 
-            //this.translate(0, -1, 0)
+            this.translate(0, 1, 0)
             
             this.house.display();
             this.popMatrix();
         }
 
         if(this.displayMyVoxelHill){
+            //Displaying the First Voxel Hill
             this.pushMatrix();
             
-            this.translate(10,-0.5, -15.0);
+            this.translate(25, 0, -25.0);
             
             this.voxelHill_1.display();
             
             this.popMatrix();
 
+            //Displaying the Second Voxel Hill
             this.pushMatrix();
-            this.translate(-20,-0.5, 15);
+
+            this.translate(-20, 0, 15);
             
             this.voxelHill_1.display();
             
             this.popMatrix();
 
+            //Displaying the Third Voxel Hill
             this.pushMatrix();
             
-            this.translate(9,-0.5, 22);
+            this.translate(15, 0, 22);
             
             this.voxelHill_2.display();
             
@@ -222,7 +247,7 @@ class MyScene extends CGFscene {
 
         if(this.displayCubeMap){
             this.pushMatrix();
-            this.translate(0.0,24, 0.0);
+            this.translate(0.0, 24, 0.0);
             this.cubeMap.display();
             this.popMatrix();
             
