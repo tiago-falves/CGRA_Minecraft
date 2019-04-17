@@ -7,22 +7,16 @@ class MyHouse extends CGFobject {
 	constructor(scene) {
         super(scene);
 		//Initialize scene objects
+        this.cube1 = new MyUnitCubeQuad(scene, 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house-window.jpg', 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house.jpg');        
         this.cube = new MyUnitCubeQuad(scene, 'images/wood-house-door.jpg', 'images/wood-house.jpg', 'images/wood-house-window.jpg', 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house.jpg');
-        this.pyramid = new MyPyramid(scene, 4, 4, 1, 1.5);
+        this.pyramid = new MyPyramid(scene, 4, 4, 0.5, 2);
         this.prism = new MyPrism(scene, 8, 1, 2, 0.2);
 
         this.initMaterials();
     }
     
     initMaterials() {
-      /*  this.sideMaterial = new CGFappearance(this.scene);
-        this.sideMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.sideMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.sideMaterial.setSpecular(0.1, 0.1, 0.1, 1);
-        this.sideMaterial.setShininess(10.0);
-        this.sideMaterial.loadTexture('exterior-wall-of-a-stone-house.jpg');
-        this.sideMaterial.setTextureWrap('REPEAT', 'REPEAT');
-*/
+     
         this.roofMaterial = new CGFappearance(this.scene);
         this.roofMaterial.setAmbient(0.1, 0.1, 0.1, 1);
         this.roofMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
@@ -30,8 +24,6 @@ class MyHouse extends CGFobject {
         this.roofMaterial.setShininess(10.0);
         this.roofMaterial.loadTexture('images/rooftop.jpg');
         this.roofMaterial.setTextureWrap('REPEAT', 'REPEAT');
-
-		
     }
     
     display()
@@ -46,20 +38,39 @@ class MyHouse extends CGFobject {
         this.cube.display();
         this.scene.popMatrix();  
 
+        // Cube Transformation
+        this.scene.pushMatrix();
+        this.scene.scale(2, 2, 2); 
+        this.scene.translate(1, 0, 0);
+        //this.sideMaterial.apply();
+        this.cube1.display();
+        this.scene.popMatrix();  
+
+        // Cube Transformation
+        this.scene.pushMatrix();
+        this.scene.scale(2, 2, 2); 
+        this.scene.translate(1, 0, -1);
+        //this.sideMaterial.apply();
+        this.cube1.display();
+        this.scene.popMatrix();  
+
+        // Cube Transformation
+        this.scene.pushMatrix();
+        this.scene.scale(2, 2, 2); 
+        this.scene.translate(0, 0, -1);
+        //this.sideMaterial.apply();
+        this.cube1.display();
+        this.scene.popMatrix();  
+
+
         
          //Pyramid Transformation
          this.scene.pushMatrix();
-
          this.scene.scale(2,2,2); 
- 
          this.scene.rotate(45*Math.PI/180, 0, 1, 0);
- 
-         this.scene.translate(0, 0.5, 0);
- 
+         this.scene.translate(0.5, 0.5, 0);
          this.roofMaterial.apply();
- 
          this.pyramid.display();
- 
          this.scene.popMatrix();
 
        
@@ -67,7 +78,7 @@ class MyHouse extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(1.5, -1, 1.5);
+        this.scene.translate(3, -1, 1.5);
         
         this.prism.display();
         
@@ -77,31 +88,13 @@ class MyHouse extends CGFobject {
         
         this.scene.pushMatrix();
 
-        this.scene.translate(-1.5, -1, 1.5);
+        this.scene.translate(-1, -1, 1.5);
 
         this.prism.display();
 
         this.scene.popMatrix();
 
-        // Column 3
-        
-        this.scene.pushMatrix();
-
-        this.scene.translate(-1.5, -1, -1.5);
-
-        this.prism.display();
-
-        this.scene.popMatrix();
-        
-        // Column 4
-        
-        this.scene.pushMatrix();
-
-        this.scene.translate(1.5, -1, -1.5);
-
-        this.prism.display();
-        
-        this.scene.popMatrix();        
+           
     }
 }
 

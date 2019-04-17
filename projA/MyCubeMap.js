@@ -135,7 +135,6 @@ class MyCubeMap extends CGFobject {
         this.frontMaterial.apply();
         this.frontQuad.display();
         this.scene.popMatrix();
-
 		this.scene.popMatrix();
        
 
