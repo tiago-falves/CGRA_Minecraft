@@ -29,7 +29,7 @@ class MyScene extends CGFscene {
         this.voxelHill_2 = new MyVoxelHill(this, 5,'images/hill2.jpg');
         this.lantern = new MyLantern(this);
         this.cubeMap = new MyCubeMap(this, 65, 'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/mp_deviladv/devils_advocate_dn.png');
-        this.terrain = new MyQuad(this);
+        this.terrain = new MyQuad(this,[0, 10,10, 10,0, 0,10, 0]);
 
         //Objects connected to MyInterface
         this.displayAxis = true;
@@ -39,7 +39,7 @@ class MyScene extends CGFscene {
         this.displayTreeGroupPatch = true;
         this.displayTreeRowPatch = true;
         this.displayCubeMap = true;
-        this.displayFloor = true;
+        this.displayTerrain = true;
         this.lightSelected = 0;
 
         this.lightsType = ['Day Light', 'Night Light'];
@@ -61,7 +61,7 @@ class MyScene extends CGFscene {
 
     initMaterials() {
         //Front
-        this.terrainMaterial = new CGFappearance(this.scene);
+        this.terrainMaterial = new CGFappearance(this);
         this.terrainMaterial.setAmbient(0.1, 0.1, 0.1, 1);
         this.terrainMaterial.setDiffuse(1, 1, 1, 1);
         this.terrainMaterial.setSpecular(0, 0, 0, 1);
@@ -161,14 +161,16 @@ class MyScene extends CGFscene {
 
         //Displaying the Terrain Plain
 
-        this.scene.pushMatrix();
-        this.scene.translate(0.0, -0.5, 0.0);
-        this.scene.rotate(-Math.PI / 2, 1.0, 0.0, 0.0);
-        this.scale(65, 65, 65);
-        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
-        this.terrainMaterial.apply();
-        this.terrain.display();
-        this.popMatrix()
+        if (this.displayTerrain){
+            this.pushMatrix();
+            this.translate(0.0, -0.5, 0.0);
+            this.rotate(-Math.PI / 2, 1.0, 0.0, 0.0);
+            this.scale(65,65,65);
+            this.terrainMaterial.apply();
+            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
+            this.terrain.display();
+            this.popMatrix();
+        }
         
         
         
