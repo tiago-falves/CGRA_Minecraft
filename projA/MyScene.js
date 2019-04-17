@@ -27,9 +27,8 @@ class MyScene extends CGFscene {
         this.treeGroupPatch = new MyTreeGroupPatch(this, 1.5, 0.25, 1.5, 1);
         this.voxelHill = new MyVoxelHill(this,6,'images/hill.jpg');
         this.voxelHill1 = new MyVoxelHill(this,4,'images/hill2.jpg');
-        this.floor = new MyQuad(this,[0, 10,10, 10,0, 0,10, 0]);
 
-        this.cubeMap = new MyCubeMap(this,200,'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/mp_deviladv/devils_advocate_dn.png');
+        this.cubeMap = new MyCubeMap(this,50,'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/floor.jpg');
 
         //Objects connected to MyInterface
         this.displayAxis = true;
@@ -45,7 +44,6 @@ class MyScene extends CGFscene {
         this.lightsType = ['Day Light', 'Night Light'];
 
         this.lightsId = { 'Day Light' : 0, 'Night Light' : 1};
-        this.initMaterials();
     }
 
     initCameras() {
@@ -59,16 +57,6 @@ class MyScene extends CGFscene {
         this.setShininess(10.0);
     }
 
-    initMaterials() {
-        //Front
-        this.floorMaterial = new CGFappearance(this);
-        this.floorMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.floorMaterial.setDiffuse(1, 1, 1, 1);
-        this.floorMaterial.setSpecular(0, 0, 0, 1);
-        this.floorMaterial.setShininess(10.0);
-        this.floorMaterial.loadTexture('images/floor.jpg');
-        this.floorMaterial.setTextureWrap('REPEAT', 'REPEAT');
-    }
 
 
     initLights() {
@@ -226,19 +214,10 @@ class MyScene extends CGFscene {
 
         if(this.displayCubeMap){
             this.pushMatrix();
-            //this.translate(0.0,24, 0.0);
+            this.translate(0.0,24, 0.0);
             this.cubeMap.display();
             this.popMatrix();
         }      
-        if (this.displayFloor){
-            this.pushMatrix();
-            this.translate(0.0, -0.5, 0.0);
-            this.rotate(-Math.PI / 2, 1.0, 0.0, 0.0);
-            this.scale(50,50,50);
-            this.floorMaterial.apply();
-            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
-            this.floor.display();
-            this.popMatrix();
-        }
+       
     }
 }
