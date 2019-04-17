@@ -16,17 +16,19 @@ class MyInterface extends CGFinterface {
         
         //Checkbox element in GUI
         
-        this.gui.add(this.scene, 'displayAxis').name('Display Axis');
+        this.gui.add(this.scene, 'displayAxis').name('Axis');
         
-        this.gui.add(this.scene, 'displayMyHouse').name('Display MyHouse');
+        this.gui.add(this.scene, 'displayMyHouse').name('MyHouse');
                 
-        this.gui.add(this.scene, 'displayMyVoxelHill').name('Display MyVoxelHill');
+        this.gui.add(this.scene, 'displayMyVoxelHill').name('MyVoxelHill');
         
-        this.gui.add(this.scene, 'displayTreeRowPatch').name('Display MyTreeRowPatch');
+        this.gui.add(this.scene, 'displayTreeRowPatch').name('MyTreeRowPatch');
        
-        this.gui.add(this.scene, 'displayTreeGroupPatch').name('Display MyTreeGroupPatch');
+        this.gui.add(this.scene, 'displayTreeGroupPatch').name('MyTreeGroupPatch');
         
-        this.gui.add(this.scene, 'displayCubeMap').name('Display CubeMap');
+        this.gui.add(this.scene, 'displayCubeMap').name('CubeMap');
+
+        this.gui.add(this.scene, 'enableTex').name(' Enable Textures');
         
         return true;
     }

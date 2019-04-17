@@ -10,7 +10,6 @@ class MyScene extends CGFscene {
         super.init(application);
         this.initCameras();
         this.initLights();
-
         this.enableTex = true;
 
         //Background color
@@ -67,6 +66,8 @@ class MyScene extends CGFscene {
         this.loadIdentity();
         // Apply transformations corresponding to the camera position relative to the origin
         this.applyViewMatrix();
+
+        this.enableTextures(this.enableTex);
         // Draw axis
         if (this.displayAxis)
             this.axis.display();
@@ -121,7 +122,7 @@ class MyScene extends CGFscene {
         if (this.displayMyHouse){
             this.pushMatrix();
 
-            this.translate(0, -1, 0)
+            //this.translate(0, -1, 0)
             
             this.house.display();
 
@@ -141,7 +142,7 @@ class MyScene extends CGFscene {
             this.popMatrix();
 
             this.pushMatrix();
-            this.translate(5,-0.5, 22);
+            this.translate(9,-0.5, 22);
             this.voxelHill1.display();
             this.popMatrix();
         }
