@@ -126,8 +126,6 @@ class MyCubeMap extends CGFobject {
         
         this.scene.translate(0, 0, -0.5);
         
-        //this.scene.rotate(Math.PI, 1.0, 0.0, 0.0);
-        
         this.backMaterial.apply();
         
         this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
@@ -174,6 +172,7 @@ class MyCubeMap extends CGFobject {
         this.frontQuad.display();
         
         this.scene.popMatrix();
+        
 		this.scene.popMatrix();
     }
 }
