@@ -8,15 +8,16 @@ class MyHouse extends CGFobject {
         super(scene);
 
 		//Initialize scene objects
+        this.cube1 = new MyUnitCubeQuad(scene, 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house-window.jpg', 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house.jpg');        
         this.cube = new MyUnitCubeQuad(scene, 'images/wood-house-door.jpg', 'images/wood-house.jpg', 'images/wood-house-window.jpg', 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house.jpg');
-        this.pyramid = new MyPyramid(scene, 4, 4, 1, 1.5);
+        this.pyramid = new MyPyramid(scene, 4, 4, 0.5, 2);
         this.prism = new MyPrism(scene, 8, 1, 2, 0.2);
+        this.quad = new MyQuad(scene);
 
         this.initMaterials();
     }
     
     initMaterials() {
-
         this.roofMaterial = new CGFappearance(this.scene);
         this.roofMaterial.setAmbient(0.1, 0.1, 0.1, 1);
         this.roofMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
@@ -24,8 +25,14 @@ class MyHouse extends CGFobject {
         this.roofMaterial.setShininess(10.0);
         this.roofMaterial.loadTexture('images/rooftop.jpg');
         this.roofMaterial.setTextureWrap('REPEAT', 'REPEAT');
-
-		
+    
+        this.poolMaterial = new CGFappearance(this.scene);
+        this.poolMaterial.setAmbient(0.5, 0.5, 0.5, 1.0);
+        this.poolMaterial.setDiffuse(0.1, 0.1, 0.1, 1.0);
+        this.poolMaterial.setSpecular(1, 1, 1, 1.0);
+        this.poolMaterial.setShininess(10.0);
+        this.poolMaterial.loadTexture('images/pool.jpg');
+        this.poolMaterial.setTextureWrap('REPEAT', 'REPEAT');
     }
     
     display()
@@ -33,64 +40,62 @@ class MyHouse extends CGFobject {
 
         // Cube Transformation
         this.scene.pushMatrix();
-       
         this.scene.scale(2, 2, 2); 
-       
         this.cube.display();
-       
         this.scene.popMatrix();  
 
+        // Cube Transformation
+        this.scene.pushMatrix();
+        this.scene.scale(2, 2, 2); 
+        this.scene.translate(1, 0, 0);
+        this.cube1.display();
+        this.scene.popMatrix();  
+
+        // Cube Transformation
+        this.scene.pushMatrix();
+        this.scene.scale(2, 2, 2); 
+        this.scene.translate(1, 0, -1);
+        this.cube1.display();
+        this.scene.popMatrix();  
+
+        // Cube Transformation
+        this.scene.pushMatrix();
+        this.scene.scale(2, 2, 2); 
+        this.scene.translate(0, 0, -1);
+        this.cube1.display();
+        this.scene.popMatrix();  
+
+        
         //Pyramid Transformation
         this.scene.pushMatrix();
-
         this.scene.scale(2,2,2); 
- 
         this.scene.rotate(45*Math.PI/180, 0, 1, 0);
- 
-        this.scene.translate(0, 0.5, 0);
- 
+        this.scene.translate(0.5, 0.5, 0);
         this.roofMaterial.apply();
- 
         this.pyramid.display();
- 
         this.scene.popMatrix();
-
-       
+        
+        
         // Column 1
         this.scene.pushMatrix();
-
-        this.scene.translate(1.5, -1, 1.5);
-        
+        this.scene.translate(3, -1, 1.5);
         this.prism.display();
-        
         this.scene.popMatrix();
         
         // Column 2
         this.scene.pushMatrix();
-
-        this.scene.translate(-1.5, -1, 1.5);
-
+        this.scene.translate(-1, -1, 1.5);
         this.prism.display();
-
         this.scene.popMatrix();
 
-        // Column 3
+        //Pool
         this.scene.pushMatrix();
-
-        this.scene.translate(-1.5, -1, -1.5);
-
-        this.prism.display();
-
-        this.scene.popMatrix();
-        
-        // Column 4
-        this.scene.pushMatrix();
-
-        this.scene.translate(1.5, -1, -1.5);
-
-        this.prism.display();
-        
-        this.scene.popMatrix();        
+        this.scene.translate(1, -1, 10);
+        this.scene.rotate(-90*Math.PI/180,1,0,0);
+        this.scene.scale(10, 10, 10); 
+        this.poolMaterial.apply();
+        this.quad.display();
+        this.scene.popMatrix(); 
     }
 }
 

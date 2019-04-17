@@ -4,65 +4,83 @@
  * @param scene - Reference to MyScene object
  */
 class MyVoxelHill extends CGFobject {
-	constructor(scene, levels) {
+	constructor(scene,levels,hillTexture) {
         super(scene);
+        this.hillTexture = hillTexture;
         
         this.levels = levels;
 
         //Initialize MyUnitCubeQuad objects
-        this.cube = new MyUnitCubeQuad(this.scene, 'images/hill.jpg', 'images/hill.jpg', 'images/hill.jpg', 'images/hill.jpg', 'images/hill.jpg', 'images/hill.jpg');
+        this.cube = new MyUnitCubeQuad(this.scene, hillTexture, hillTexture, hillTexture, hillTexture, hillTexture, hillTexture);
               
 	}
 
-    display(level = this.levels) {
+    display() {
 
-        if (level == 1) {
+        this.k= this.levels;
+        
+        this.initialPosition = 0;
 
-            this.scene.pushMatrix();
+        for(var l = 0; l < this.levels; l++){      
+        
+            for(var i = 0; i < 2*this.k-2; i++){
 
-            this.scene.translate(0, this.levels - 0.5, 0);
+                this.scene.pushMatrix();
 
-            this.cube.display();
+                this.scene.translate(i + 1 + this.initialPosition, this.initialPosition, -this.initialPosition);
+                
+                this.cube.display();
 
-            this.scene.popMatrix();
+                this.scene.popMatrix();
+                
+            }
 
-            return;
+            for(var i = 0; i < 2*this.k-2; i++){
+
+                this.scene.pushMatrix();
+                
+                this.scene.translate(this.initialPosition + 2 * this.k - 2, this.initialPosition, -1 - i - this.initialPosition);
+                
+                this.cube.display();
+                
+                this.scene.popMatrix();
+            }
+
+            for(var i = 0; i < 2*this.k-2; i++){
+                 
+                this.scene.pushMatrix();
+                
+                this.scene.translate(-1 - i + 2 * this.k - 2 + this.initialPosition, this.initialPosition, -2 * this.k + 2 - this.initialPosition);
+                
+                this.cube.display();
+                
+                this.scene.popMatrix();
+            }
+            
+            for(var i = 0; i < 2*this.k-2; i++){
+
+                this.scene.pushMatrix();
+                
+                this.scene.translate(this.initialPosition, this.initialPosition, 1 + i - 2 * this.k + 2 - this.initialPosition);
+                
+                this.cube.display();
+                
+                this.scene.popMatrix();
+            } 
+
+           this.k -= 1;
+           this.initialPosition += 1;        
+            
         }
 
-        var z_translation = 0;
-
-        var x_translation = 0;
-
-        for (var i = 0; i < (2 * level - 2) * 4; i++ ) {
-
-            this.scene.pushMatrix();
-
-            this.scene.translate(-level + 1  + x_translation , 0.5 + this.levels - level, level - 1 + z_translation);
-
-            this.cube.display();
-
-            this.scene.popMatrix();
-
-            if (i < (2 * level -2)) {
-                x_translation++;
-            }
-            else if (i < (2 * level -2) * 2) {
-                z_translation--;
-            }
-            else if (i < (2 * level -2) * 3) {
-                x_translation--;
-            }
-            else if (i < (2 * level -2) * 4 - 1) {
-                z_translation++;
-            }
-            else {
-                x_translation = 0;
-                z_translation = 0;
-            }
-        }
-
-        return this.display(level - 1);
+        this.scene.pushMatrix();
+        
+        this.scene.translate(this.levels - 1, this.levels - 1, -this.levels + 1);
+        
+        this.cube.display();
+        
+        this.scene.popMatrix();
+        
     }
+    
 }
-
-
