@@ -5,10 +5,12 @@
 class MyCone extends CGFobject {
     constructor(scene, slices, stacks, height, radius, textureCone) { //
         super(scene);
+
         this.slices = slices;
         this.stacks = stacks;
         this.height = height;
         this.radius = radius;
+
         this.initBuffers(height, radius);
     }
     
@@ -16,7 +18,11 @@ class MyCone extends CGFobject {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
+<<<<<<< HEAD
         this.texCoords = []; 
+=======
+        this.texCoords = [];
+>>>>>>> 7f6de79919e42d007c61dc27f07e5492a8e199d3
         
 
         var ang = 0;
@@ -28,6 +34,7 @@ class MyCone extends CGFobject {
             this.indices.push(i, (i+1) % this.slices, this.slices);
             this.normals.push(Math.cos(ang), Math.cos(Math.PI/4.0), -Math.sin(ang));
             this.texCoords.push(0.5 + 0.5*radius*Math.cos(ang), 0.5 + 0.5*radius*Math.sin(ang))
+
             ang+=alphaAng;
         }
         

@@ -49,63 +49,100 @@ class MyHouse extends CGFobject {
 
         // Cube Transformation
         this.scene.pushMatrix();
-        this.scene.scale(2, 2, 2); 
+        
+        this.scene.scale(2, 2, 2);
+        
+        this.scene.translate(-0.5, 0 ,0.5);
+        
         this.cube.display();
+        
         this.scene.popMatrix();  
 
         // Cube Transformation
         this.scene.pushMatrix();
+        
         this.scene.scale(2, 2, 2); 
-        this.scene.translate(1, 0, 0);
+        
+        this.scene.translate(0.5, 0, 0.5);
+        
         this.cube1.display();
+        
         this.scene.popMatrix();  
 
         // Cube Transformation
         this.scene.pushMatrix();
+        
         this.scene.scale(2, 2, 2); 
-        this.scene.translate(1, 0, -1);
+        
+        this.scene.translate(0.5, 0, -0.5);
+        
         this.cube1.display();
+        
         this.scene.popMatrix();  
 
         // Cube Transformation
         this.scene.pushMatrix();
+        
         this.scene.scale(2, 2, 2); 
-        this.scene.translate(0, 0, -1);
+        
+        this.scene.translate(-0.5, 0, -0.5);
+        
         this.cube1.display();
+        
         this.scene.popMatrix();  
 
         
         //Pyramid Transformation
         this.scene.pushMatrix();
+        
         this.scene.scale(2,2,2); 
-        this.scene.rotate(45*Math.PI/180, 0, 1, 0);
-        this.scene.translate(0.5, 0.5, 0);
+        
+        this.scene.rotate(Math.PI/4, 0, 1, 0);
+        
+        this.scene.translate(0, 0.5, 0);
+        
         this.roofMaterial.apply();
+        
         this.pyramid.display();
+        
         this.scene.popMatrix();
         
         
         // Column 1
         this.scene.pushMatrix();
-        this.scene.translate(3, -1, 1.5);
+        
+        this.scene.translate(2.3, -1, 2.3);
+        
         this.collumnMaterial.apply();
+        
         this.prism.display();
+        
         this.scene.popMatrix();
         
         // Column 2
         this.scene.pushMatrix();
-        this.scene.translate(-1, -1, 1.5);
+        
+        this.scene.translate(-2.3, -1, 2.3);
+        
         this.collumnMaterial.apply()
+        
         this.prism.display();
+        
         this.scene.popMatrix();
 
         //Pool
         this.scene.pushMatrix();
-        this.scene.translate(1, -0.9, 10);
-        this.scene.rotate(-90*Math.PI/180,1,0,0);
+        
+        this.scene.translate(0, -0.9, 10);
+        
+        this.scene.rotate(-Math.PI/2, 1, 0, 0);
+        
         this.scene.scale(10, 10, 10); 
+        
         this.poolMaterial.apply();
+        
         this.quad.display();
+        
         this.scene.popMatrix(); 
     }
 }

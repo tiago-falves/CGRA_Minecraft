@@ -6,6 +6,7 @@
 class MyTree extends CGFobject {
     constructor(scene, trunkHeight, trunkRadius, treeTopHeight, treeTopRadius, treeTopTexture, truncTexture){
         super(scene);
+
         this.trunkHeight = trunkHeight;
         this.trunkRadius = trunkRadius;
         this.treeTopHeight = treeTopHeight;
@@ -16,8 +17,10 @@ class MyTree extends CGFobject {
         //Initializing MyTree Objects
         this.trunk = new MyCylinder(this.scene, 10, 10, trunkHeight, 0.5);
         this.cone = new MyCone(this.scene, 10, 10, treeTopHeight, treeTopRadius,'images/copa-arvore.jpg');
+        
         this.initMaterials();
     }
+
     initMaterials() {
 
         //Texture Leaves
@@ -39,7 +42,6 @@ class MyTree extends CGFobject {
         this.trunkMaterial.setTextureWrap('REPEAT', 'REPEAT');
     }
 
-    
     display(){
 
         //Trunk Displaying

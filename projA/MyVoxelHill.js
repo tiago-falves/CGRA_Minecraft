@@ -43,21 +43,17 @@ class MyVoxelHill extends CGFobject {
 
             this.scene.popMatrix();
 
-            if (i < (2 * level -2)) {
+            if (i < (2 * level -2)) {      //While this condition is met we are constructing the cube on that are perpendicular do the positive z axis
                 x_translation++;
             }
-            else if (i < (2 * level -2) * 2) {
+            else if (i < (2 * level -2) * 2) {       //While this condition is met we are constructing the cube on that are perpendicular do the positive x axis
                 z_translation--;
             }
-            else if (i < (2 * level -2) * 3) {
+            else if (i < (2 * level -2) * 3) {      //While this condition is met we are constructing the cube on that are perpendicular do the negative z axis
                 x_translation--;
             }
-            else if (i < (2 * level -2) * 4 - 1) {
+            else if (i < (2 * level -2) * 4 - 1) {  //While this condition is met we are constructing the cube on that are perpendicular do the negative x axis
                 z_translation++;
-            }
-            else {
-                x_translation = 0;
-                z_translation = 0;
             }
         }
 

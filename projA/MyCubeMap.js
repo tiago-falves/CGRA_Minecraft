@@ -183,6 +183,7 @@ class MyCubeMap extends CGFobject {
         this.frontQuad.display();
         
         this.scene.popMatrix();
+        
 		this.scene.popMatrix();
     }
 }
