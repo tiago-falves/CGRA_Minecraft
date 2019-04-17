@@ -86,11 +86,10 @@ class MyScene extends CGFscene {
             this.translate(0,-1, -10.0);
             this.rotate(90*Math.PI/180,0,1,0);
             this.treeRowPatch.display();
+           
             this.popMatrix();
         }
     
-        
-
         if(this.displayTreeGroupPatch){
             this.pushMatrix();
             this.translate(-0,-1, -18);
@@ -115,15 +114,25 @@ class MyScene extends CGFscene {
             this.pushMatrix();
             this.translate(19,-1,3);
             this.treeGroupPatch.display();
+            
             this.popMatrix();
         }
-        if (this.displayMyHouse)
+
+        if (this.displayMyHouse){
+            this.pushMatrix();
+
+            this.translate(0, -1, 0)
+            
             this.house.display();
+
+            this.popMatrix();
+        }
 
         if(this.displayMyVoxelHill){
             this.pushMatrix();
             this.translate(10,-0.5, -15.0);
             this.voxelHill.display();
+            
             this.popMatrix();
 
             this.pushMatrix();
@@ -136,13 +145,13 @@ class MyScene extends CGFscene {
             this.voxelHill1.display();
             this.popMatrix();
         }
+
         if(this.displayCubeMap){
             this.pushMatrix();
             this.translate(0.0,23, 0.0);
             this.cubeMap.display();
             this.popMatrix();
             
-        }
-            
+        }      
     }
 }

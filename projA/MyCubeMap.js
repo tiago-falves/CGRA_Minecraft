@@ -5,7 +5,8 @@
  */
 class MyCubeMap extends CGFobject {
 	constructor(scene,scale, frontTexture, backTexture, leftTexture, rightTexture, topTexture, bottomTexture) {
-		super(scene);
+        super(scene);
+        
 		this.scale = scale;
                 
         //Initialize MyUnitCubeQuad objects
@@ -15,12 +16,15 @@ class MyCubeMap extends CGFobject {
         this.backQuad = new MyQuad(this.scene);
         this.topQuad = new MyQuad(this.scene);
         this.bottomQuad = new MyQuad(this.scene);
+
+        //Initialize Textures
         this.frontTexture = frontTexture;
         this.backTexture = backTexture;
         this.leftTexture = leftTexture;
         this.rightTexture = rightTexture;
         this.topTexture = topTexture;
         this.bottomTexture = bottomTexture;
+
         this.initMaterials();
     
     }
@@ -77,67 +81,100 @@ class MyCubeMap extends CGFobject {
         this.bottomMaterial.setSpecular(0.1, 0.1, 0.1, 1);
         this.bottomMaterial.setShininess(10.0);
         this.bottomMaterial.loadTexture(this.bottomTexture);
-        this.bottomMaterial.setTextureWrap('REPEAT', 'REPEAT');
-        
-        
+        this.bottomMaterial.setTextureWrap('REPEAT', 'REPEAT');     
     }
     
     
     display() {
-		this.scene.pushMatrix();
+
+        this.scene.pushMatrix();
+        
         this.scene.scale(this.scale,this.scale,this.scale);
+
         //Displaying Top Quad
         this.scene.pushMatrix();
+       
         this.scene.translate(0.0, 0.5, 0.0);
-        this.scene.rotate(Math.PI/2, 1.0, 0.0, 0.0);
+       
+        this.scene.rotate(Math.PI / 2, 1.0, 0.0, 0.0);
+       
         this.topMaterial.apply();
+       
         this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+       
         this.topQuad.display();
-		this.scene.popMatrix();
+        
+        this.scene.popMatrix();
 		
 		//Displaying Bottom Quad
 		this.scene.pushMatrix();
-		this.scene.translate(0.0, -0.5, 0.0);
-		this.scene.rotate(-Math.PI/2, 1.0, 0.0, 0.0);
-		this.bottomMaterial.apply();
-		this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
-		this.bottomQuad.display();
-		this.scene.popMatrix();
+        
+        this.scene.translate(0.0, -0.5, 0.0);
+        
+        this.scene.rotate(-Math.PI / 2, 1.0, 0.0, 0.0);
+        
+        this.bottomMaterial.apply();
+        
+        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+        
+        this.bottomQuad.display();
+        
+        this.scene.popMatrix();
+        
         //Displaying Back Quad
         this.scene.pushMatrix();
+        
         this.scene.translate(0, 0, -0.5);
+        
         //this.scene.rotate(Math.PI, 1.0, 0.0, 0.0);
+        
         this.backMaterial.apply();
+        
         this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+        
         this.backQuad.display();
+        
         this.scene.popMatrix();
 
         //Displaying Left Quad
         this.scene.pushMatrix();
-        this.scene.translate(-0.5,0,0);
-        this.scene.rotate(Math.PI/2, 0.0, 1.0, 0.0);
+        
+        this.scene.translate(-0.5 , 0, 0);
+        
+        this.scene.rotate(Math.PI / 2, 0.0, 1.0, 0.0);
+        
         this.leftMaterial.apply();
+        
         this.leftQuad.display();
+        
         this.scene.popMatrix();
 
         //Displaying Right Quad
         this.scene.pushMatrix();
-        this.scene.translate(0.5,0,0);
-        this.scene.rotate(-Math.PI/2, 0.0, 1.0, 0.0);
+        
+        this.scene.translate(0.5, 0, 0);
+        
+        this.scene.rotate(-Math.PI / 2, 0.0, 1.0, 0.0);
+        
         this.rightMaterial.apply();
+        
         this.rightQuad.display();
+        
         this.scene.popMatrix();
 
         //Displaying Front Quad
         this.scene.pushMatrix();
-		this.scene.translate(0.0, 0.0, 0.5);
+        
+        this.scene.translate(0.0, 0.0, 0.5);
+        
         this.scene.rotate(-Math.PI, 0, 1.0, 0.0);		
+        
         this.frontMaterial.apply();
+        
         this.frontQuad.display();
+        
         this.scene.popMatrix();
 		this.scene.popMatrix();
-       
-
     }
 }
 

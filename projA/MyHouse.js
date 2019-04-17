@@ -6,6 +6,7 @@
 class MyHouse extends CGFobject {
 	constructor(scene) {
         super(scene);
+
 		//Initialize scene objects
         this.cube1 = new MyUnitCubeQuad(scene, 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house-window.jpg', 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house.jpg');        
         this.cube = new MyUnitCubeQuad(scene, 'images/wood-house-door.jpg', 'images/wood-house.jpg', 'images/wood-house-window.jpg', 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house.jpg');
@@ -16,7 +17,11 @@ class MyHouse extends CGFobject {
     }
     
     initMaterials() {
+<<<<<<< HEAD
      
+=======
+
+>>>>>>> b2e7f41a4ec47d06140ad377472620b6dd3e3d10
         this.roofMaterial = new CGFappearance(this.scene);
         this.roofMaterial.setAmbient(0.1, 0.1, 0.1, 1);
         this.roofMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
@@ -29,15 +34,16 @@ class MyHouse extends CGFobject {
     display()
     {
 
-      
-
         // Cube Transformation
         this.scene.pushMatrix();
+       
         this.scene.scale(2, 2, 2); 
-        //this.sideMaterial.apply();
+       
         this.cube.display();
+       
         this.scene.popMatrix();  
 
+<<<<<<< HEAD
         // Cube Transformation
         this.scene.pushMatrix();
         this.scene.scale(2, 2, 2); 
@@ -72,10 +78,25 @@ class MyHouse extends CGFobject {
          this.roofMaterial.apply();
          this.pyramid.display();
          this.scene.popMatrix();
+=======
+        //Pyramid Transformation
+        this.scene.pushMatrix();
+
+        this.scene.scale(2,2,2); 
+ 
+        this.scene.rotate(45*Math.PI/180, 0, 1, 0);
+ 
+        this.scene.translate(0, 0.5, 0);
+ 
+        this.roofMaterial.apply();
+ 
+        this.pyramid.display();
+ 
+        this.scene.popMatrix();
+>>>>>>> b2e7f41a4ec47d06140ad377472620b6dd3e3d10
 
        
         // Column 1
-
         this.scene.pushMatrix();
 
         this.scene.translate(3, -1, 1.5);
@@ -85,7 +106,6 @@ class MyHouse extends CGFobject {
         this.scene.popMatrix();
         
         // Column 2
-        
         this.scene.pushMatrix();
 
         this.scene.translate(-1, -1, 1.5);
@@ -94,7 +114,27 @@ class MyHouse extends CGFobject {
 
         this.scene.popMatrix();
 
+<<<<<<< HEAD
            
+=======
+        // Column 3
+        this.scene.pushMatrix();
+
+        this.scene.translate(-1.5, -1, -1.5);
+
+        this.prism.display();
+
+        this.scene.popMatrix();
+        
+        // Column 4
+        this.scene.pushMatrix();
+
+        this.scene.translate(1.5, -1, -1.5);
+
+        this.prism.display();
+        
+        this.scene.popMatrix();        
+>>>>>>> b2e7f41a4ec47d06140ad377472620b6dd3e3d10
     }
 }
 
