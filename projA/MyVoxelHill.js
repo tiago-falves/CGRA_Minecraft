@@ -4,14 +4,13 @@
  * @param scene - Reference to MyScene object
  */
 class MyVoxelHill extends CGFobject {
-	constructor(scene,levels,hillTexture) {
+	constructor(scene, levels) {
         super(scene);
-        this.hillTexture = hillTexture;
         
         this.levels = levels;
 
         //Initialize MyUnitCubeQuad objects
-        this.cube = new MyUnitCubeQuad(this.scene, hillTexture, hillTexture, hillTexture, hillTexture, hillTexture, hillTexture);
+        this.cube = new MyUnitCubeQuad(this.scene, 'images/hill.jpg', 'images/hill.jpg', 'images/hill.jpg', 'images/hill.jpg', 'images/hill.jpg', 'images/hill.jpg');
               
 	}
 
@@ -64,5 +63,6 @@ class MyVoxelHill extends CGFobject {
 
         return this.display(level - 1);
     }
-    
 }
+
+

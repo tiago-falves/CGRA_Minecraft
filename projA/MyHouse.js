@@ -26,8 +26,17 @@ class MyHouse extends CGFobject {
         this.roofMaterial.loadTexture('images/rooftop.jpg');
         this.roofMaterial.setTextureWrap('REPEAT', 'REPEAT');
     
+        this.collumnMaterial = new CGFappearance(this.scene);
+        this.collumnMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.collumnMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.collumnMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.collumnMaterial.setShininess(10.0);
+        this.collumnMaterial.loadTexture('images/collumn.jpg');
+        this.collumnMaterial.setTextureWrap('REPEAT', 'REPEAT');
+    
+
         this.poolMaterial = new CGFappearance(this.scene);
-        this.poolMaterial.setAmbient(0.5, 0.5, 0.5, 1.0);
+        this.poolMaterial.setAmbient(0.1, 0.1, 0.1, 1.0);
         this.poolMaterial.setDiffuse(0.1, 0.1, 0.1, 1.0);
         this.poolMaterial.setSpecular(1, 1, 1, 1.0);
         this.poolMaterial.setShininess(10.0);
@@ -79,18 +88,20 @@ class MyHouse extends CGFobject {
         // Column 1
         this.scene.pushMatrix();
         this.scene.translate(3, -1, 1.5);
+        this.collumnMaterial.apply();
         this.prism.display();
         this.scene.popMatrix();
         
         // Column 2
         this.scene.pushMatrix();
         this.scene.translate(-1, -1, 1.5);
+        this.collumnMaterial.apply()
         this.prism.display();
         this.scene.popMatrix();
 
         //Pool
         this.scene.pushMatrix();
-        this.scene.translate(1, -1, 10);
+        this.scene.translate(1, -0.9, 10);
         this.scene.rotate(-90*Math.PI/180,1,0,0);
         this.scene.scale(10, 10, 10); 
         this.poolMaterial.apply();
