@@ -26,7 +26,7 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this);
         this.treeRowPatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
         this.treeGroupPatch = new MyTreeGroupPatch(this, 1.5, 0.25, 1.5, 1);
-        this.voxelHill = new MyVoxelHill(this,3);
+        this.voxelHill = new MyVoxelHill(this, 4);
         this.cubeMap = new MyCubeMap(this);
 
         //Objects connected to MyInterface

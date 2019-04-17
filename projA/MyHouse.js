@@ -6,6 +6,7 @@
 class MyHouse extends CGFobject {
 	constructor(scene) {
         super(scene);
+        
 		//Initialize scene objects
         this.cube = new MyUnitCubeQuad(scene, 'images/wood-house-door.jpg', 'images/wood-house.jpg', 'images/wood-house-window.jpg', 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house.jpg');
         this.pyramid = new MyPyramid(scene, 4, 4, 1, 1.5);
@@ -37,8 +38,6 @@ class MyHouse extends CGFobject {
     display()
     {
 
-      
-
         // Cube Transformation
         this.scene.pushMatrix();
         this.scene.scale(2, 2, 2); 
@@ -46,21 +45,20 @@ class MyHouse extends CGFobject {
         this.cube.display();
         this.scene.popMatrix();  
 
-        
-         //Pyramid Transformation
-         this.scene.pushMatrix();
+        //Pyramid Transformation
+        this.scene.pushMatrix();
 
-         this.scene.scale(2,2,2); 
+        this.scene.scale(2,2,2); 
  
-         this.scene.rotate(45*Math.PI/180, 0, 1, 0);
+        this.scene.rotate(45*Math.PI/180, 0, 1, 0);
  
-         this.scene.translate(0, 0.5, 0);
+        this.scene.translate(0, 0.5, 0);
  
-         this.roofMaterial.apply();
+        this.roofMaterial.apply();
  
-         this.pyramid.display();
+        this.pyramid.display();
  
-         this.scene.popMatrix();
+        this.scene.popMatrix();
 
        
         // Column 1
