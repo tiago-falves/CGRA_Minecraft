@@ -6,7 +6,7 @@
 class MyHouse extends CGFobject {
 	constructor(scene) {
         super(scene);
-        
+
 		//Initialize scene objects
         this.cube = new MyUnitCubeQuad(scene, 'images/wood-house-door.jpg', 'images/wood-house.jpg', 'images/wood-house-window.jpg', 'images/wood-house-window.jpg', 'images/wood-house.jpg', 'images/wood-house.jpg');
         this.pyramid = new MyPyramid(scene, 4, 4, 1, 1.5);
@@ -16,14 +16,7 @@ class MyHouse extends CGFobject {
     }
     
     initMaterials() {
-      /*  this.sideMaterial = new CGFappearance(this.scene);
-        this.sideMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.sideMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.sideMaterial.setSpecular(0.1, 0.1, 0.1, 1);
-        this.sideMaterial.setShininess(10.0);
-        this.sideMaterial.loadTexture('exterior-wall-of-a-stone-house.jpg');
-        this.sideMaterial.setTextureWrap('REPEAT', 'REPEAT');
-*/
+
         this.roofMaterial = new CGFappearance(this.scene);
         this.roofMaterial.setAmbient(0.1, 0.1, 0.1, 1);
         this.roofMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
@@ -40,9 +33,11 @@ class MyHouse extends CGFobject {
 
         // Cube Transformation
         this.scene.pushMatrix();
+       
         this.scene.scale(2, 2, 2); 
-        //this.sideMaterial.apply();
+       
         this.cube.display();
+       
         this.scene.popMatrix();  
 
         //Pyramid Transformation
@@ -62,7 +57,6 @@ class MyHouse extends CGFobject {
 
        
         // Column 1
-
         this.scene.pushMatrix();
 
         this.scene.translate(1.5, -1, 1.5);
@@ -72,7 +66,6 @@ class MyHouse extends CGFobject {
         this.scene.popMatrix();
         
         // Column 2
-        
         this.scene.pushMatrix();
 
         this.scene.translate(-1.5, -1, 1.5);
@@ -82,7 +75,6 @@ class MyHouse extends CGFobject {
         this.scene.popMatrix();
 
         // Column 3
-        
         this.scene.pushMatrix();
 
         this.scene.translate(-1.5, -1, -1.5);
@@ -92,7 +84,6 @@ class MyHouse extends CGFobject {
         this.scene.popMatrix();
         
         // Column 4
-        
         this.scene.pushMatrix();
 
         this.scene.translate(1.5, -1, -1.5);

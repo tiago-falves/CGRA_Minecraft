@@ -9,24 +9,40 @@ class MyTreeGroupPatch extends CGFobject {
 
         //Trees with randomish dimensions
         this.tree1 = new MyTree(this.scene, trunkHeight + Math.random() * 0.5, trunkRadius + Math.random() * 0.2, treeTopHeight + Math.random() * 0.5, treeTopRadius + Math.random() * 0.2,' images/treeCrown.PNG', 'images/trunk.jpg');
+        
         this.tree2 = new MyTree(this.scene, trunkHeight + Math.random() * 0.5, trunkRadius + Math.random() * 0.2, treeTopHeight + Math.random() * 0.5, treeTopRadius + Math.random() * 0.2, 'images/treeCrown.PNG', 'images/trunk.jpg');
+        
         this.tree3 = new MyTree(this.scene, trunkHeight + Math.random() * 0.5, trunkRadius + Math.random() * 0.2, treeTopHeight + Math.random() * 0.5, treeTopRadius + Math.random() * 0.2, 'images/treeCrown.PNG', 'images/trunk.jpg');
+        
         this.tree4 = new MyTree(this.scene, trunkHeight + Math.random() * 0.5, trunkRadius + Math.random() * 0.2, treeTopHeight + Math.random() * 0.5, treeTopRadius + Math.random() * 0.2, 'images/treeCrown.PNG', 'images/trunk.jpg');
+        
         this.tree5 = new MyTree(this.scene, trunkHeight + Math.random() * 0.5, trunkRadius + Math.random() * 0.2, treeTopHeight + Math.random() * 0.5, treeTopRadius + Math.random() * 0.2, 'images/treeCrown.PNG', 'images/trunk.jpg');
+        
         this.tree6 = new MyTree(this.scene, trunkHeight + Math.random() * 0.5, trunkRadius + Math.random() * 0.2, treeTopHeight + Math.random() * 0.5, treeTopRadius + Math.random() * 0.2, 'images/treeCrown.PNG', 'images/trunk.jpg');
+        
         this.tree7 = new MyTree(this.scene, trunkHeight + Math.random() * 0.5, trunkRadius + Math.random() * 0.2, treeTopHeight + Math.random() * 0.5, treeTopRadius + Math.random() * 0.2, 'images/treeCrown.PNG', 'images/trunk.jpg');
+        
         this.tree8 = new MyTree(this.scene, trunkHeight + Math.random() * 0.5, trunkRadius + Math.random() * 0.2, treeTopHeight + Math.random() * 0.5, treeTopRadius + Math.random() * 0.2, 'images/treeCrown.PNG', 'images/trunk.jpg');
+        
         this.tree9 = new MyTree(this.scene, trunkHeight + Math.random() * 0.5, trunkRadius + Math.random() * 0.2, treeTopHeight + Math.random() * 0.5, treeTopRadius + Math.random() * 0.2, 'images/treeCrown.PNG', 'images/trunk.jpg');
 
         //Values to desilign the trees
         this.value1 = Math.random() * -0.3;
+        
         this.value2 = Math.random() * 0.3;
+        
         this.value3 = Math.random() * -0.3;
+        
         this.value4 = Math.random() * 0.3;
+        
         this.value5 = Math.random() * -0.3;
+        
         this.value6 = Math.random() * -0.3;
+        
         this.value7 = Math.random() * 0.3;
+        
         this.value8 = Math.random() * -0.3;
+        
         this.value9 = Math.random() * 0.3;
     }
     
@@ -44,7 +60,7 @@ class MyTreeGroupPatch extends CGFobject {
 
             this.scene.pushMatrix();
 
-            this.scene.translate(row*7.5 - 7.5 + desilignement_values[i], 0, line*7.5 - 7.5 + desilignement_values[8-i]);
+            this.scene.translate(row * 2.5 - 2.5 + desilignement_values[i], 0, line * 2.5 - 2.5 + desilignement_values[8-i]);
             
             trees[i].display();
 
