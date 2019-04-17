@@ -68,7 +68,7 @@ class MyScene extends CGFscene {
         this.terrainMaterial.setDiffuse(1, 1, 1, 1);
         this.terrainMaterial.setSpecular(0, 0, 0, 1);
         this.terrainMaterial.setShininess(10.0);
-        this.terrainMaterial.loadTexture('images/hills_dn.png');
+        this.terrainMaterial.loadTexture('images/floor.jpg');
         this.terrainMaterial.setTextureWrap('REPEAT', 'REPEAT');
     }
 
@@ -141,15 +141,21 @@ class MyScene extends CGFscene {
         // ---- BEGIN Background, camera and axis setup
 
         // Clear image and depth buffer everytime we update the scene
+
         this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
         this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 
         // Initialize Model-View matrix as identity (no transformation
+
         this.updateProjectionMatrix();
         this.loadIdentity();
 
         // Apply transformations corresponding to the camera position relative to the origin
+
         this.applyViewMatrix();
+
+
+        //Enable Textures
 
         this.enableTextures(this.enableTex);
 
@@ -163,154 +169,107 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //Displaying the Terrain Plain
+
         this.pushMatrix();
-        
         this.translate(0.0, -0.5, 0.0);
-        
         this.rotate(-Math.PI / 2, 1.0, 0.0, 0.0);
-        
         this.scale(65,65,65);
-        
         this.terrainMaterial.apply();
-        
         this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
-        
         this.terrain.display();
-        
         this.popMatrix();
+
        
         //Displaying the First Tree Row
         this.pushMatrix();
-        
         this.translate(0, 0, 24);
-        
         this.rotate(Math.PI/2, 0, 1, 0);
-        
         this.treeRowPatch.display();
-        
         this.popMatrix();
 
         //Displaying the Second Tree Row
         this.pushMatrix();
-        
         this.translate(0, 0, 20);
-        
         this.rotate(Math.PI/2, 0, 1, 0);
-        
         this.treeRowPatch.display();
-        
         this.popMatrix();
+
         
         //Displaying the First Tree Group
         this.pushMatrix();
-        
         this.translate(0, 0, -18);
-        
         this.treeGroupPatch.display();
-        
         this.popMatrix();
 
         //Displaying the Second Tree Group
         this.pushMatrix();
-        
         this.translate(-15,0, -8);
-        
         this.treeGroupPatch.display();
-        
         this.popMatrix();
+
 
         //Displaying the Third Tree Group
         this.pushMatrix();
-        
         this.translate(-20,0, -18);
-        
         this.treeGroupPatch.display();
-        
         this.popMatrix();
 
         //Displaying the Forth Tree Group
         this.pushMatrix();
-        
         this.translate(19,0, 0);
-        
         this.treeGroupPatch.display();
-        
         this.popMatrix();
         
         //Displaying the Fifth Trre Group
         this.pushMatrix();
-        
         this.translate(19,0,15);
-        
         this.treeGroupPatch.display();
-        
         this.popMatrix();
         
         //Displaying the House
         this.pushMatrix();
-
         this.translate(0, 1, 0);
-            
         this.house.display();
-        
         this.popMatrix();
         
         //Displaying the First Voxel Hill
         this.pushMatrix();
-            
         this.translate(25, 0, -25.0);
-        
         this.voxelHill_1.display();
-        
         this.popMatrix();
 
         //Displaying the Second Voxel Hill
         this.pushMatrix();
-
         this.translate(-20, 0, 15);
-        
         this.voxelHill_1.display();
-        
         this.popMatrix();
 
         //Displaying the Third Voxel Hill
         this.pushMatrix();
-        
         this.translate(15, 0, 22);
-        
         this.voxelHill_2.display();
-        
         this.popMatrix();
         
         //Displaying Map Cube if Day Light is Selected
         if (this.lightSelected == 'Day Light'){
             this.pushMatrix();
-
             this.translate(0.0, 24, 0.0);
-
             this.cubeMapDay.display();
-
             this.popMatrix();
-            
         }
+
         //Displaying Map Cube if Night Light is Selected 
         else {
             this.pushMatrix();
-
             this.translate(0.0, 24, 0.0);
-
             this.cubeMapNight.display();
-
             this.popMatrix();
         }    
         
         //Displaying the Lantern
         this.pushMatrix();
-
         this.translate(3, 0 , 3);
-
         this.lantern.display();
-
         this.popMatrix();
     }
 }

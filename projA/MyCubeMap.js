@@ -15,7 +15,7 @@ class MyCubeMap extends CGFobject {
         this.rightQuad = new MyQuad(this.scene);
         this.backQuad = new MyQuad(this.scene);
         this.topQuad = new MyQuad(this.scene);
-        this.bottomQuad = new MyQuad(this.scene,[0, 10,10, 10,0, 0,10, 0]);
+        this.bottomQuad = new MyQuad(this.scene);
 
         //Initialize Textures
         this.frontTexture = frontTexture;
@@ -31,7 +31,7 @@ class MyCubeMap extends CGFobject {
     initMaterials() {
         //Front
         this.frontMaterial = new CGFappearance(this.scene);
-        this.frontMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.frontMaterial.setAmbient(0.5, 0.5, 0.5, 1);
         this.frontMaterial.setDiffuse(1, 1, 1, 1);
         this.frontMaterial.setSpecular(0, 0, 0, 1);
         this.frontMaterial.setShininess(10.0);
@@ -40,7 +40,7 @@ class MyCubeMap extends CGFobject {
         
         //Back
         this.backMaterial = new CGFappearance(this.scene);
-        this.backMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.backMaterial.setAmbient(0.5, 0.5, 0.5, 1);
         this.backMaterial.setDiffuse(1, 1, 1, 1);
         this.backMaterial.setSpecular(0, 0, 0, 1);
         this.backMaterial.setShininess(10.0);
@@ -49,8 +49,8 @@ class MyCubeMap extends CGFobject {
         
         //Left
         this.leftMaterial = new CGFappearance(this.scene);
-        this.leftMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.leftMaterial.setDiffuse(1, 1, 1, 1);
+        this.leftMaterial.setAmbient(0.5, 0.5, 0.5, 1);
+        this.leftMaterial.setDiffuse(0.8, 0.8, 0.8, 0.8);
         this.leftMaterial.setSpecular(0, 0, 0, 1);
         this.leftMaterial.setShininess(10.0);
         this.leftMaterial.loadTexture(this.leftTexture);
@@ -58,7 +58,7 @@ class MyCubeMap extends CGFobject {
         
         //Right
         this.rightMaterial = new CGFappearance(this.scene);
-        this.rightMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.rightMaterial.setAmbient(0.5, 0.5, 0.5, 1);
         this.rightMaterial.setDiffuse(1, 1, 1, 1);
         this.rightMaterial.setSpecular(0, 0, 0, 1);
         this.rightMaterial.setShininess(10.0);
@@ -67,7 +67,7 @@ class MyCubeMap extends CGFobject {
         
         //Top
         this.topMaterial = new CGFappearance(this.scene);
-        this.topMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.topMaterial.setAmbient(0.5, 0.5, 0.5, 1);
         this.topMaterial.setDiffuse(1, 1, 1, 1);
         this.topMaterial.setSpecular(0, 0, 0, 1);
         this.topMaterial.setShininess(10.0);
@@ -76,7 +76,7 @@ class MyCubeMap extends CGFobject {
         
         //Back
         this.bottomMaterial = new CGFappearance(this.scene);
-        this.bottomMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.bottomMaterial.setAmbient(0.5, 0.5, 0.5, 1);
         this.bottomMaterial.setDiffuse(1, 1, 1, 1);
         this.bottomMaterial.setSpecular(0, 0, 0, 1);
         this.bottomMaterial.setShininess(10.0);
@@ -92,6 +92,7 @@ class MyCubeMap extends CGFobject {
         this.scene.scale(this.scale,this.scale,this.scale);
 
         //Displaying Top Quad
+
         this.scene.pushMatrix();
        
         this.scene.translate(0.0, 0.5, 0.0);
@@ -105,8 +106,10 @@ class MyCubeMap extends CGFobject {
         this.topQuad.display();
         
         this.scene.popMatrix();
-		
-		//Displaying Bottom Quad
+        
+        
+        //Displaying Bottom Quad
+        
 		this.scene.pushMatrix();
         
         this.scene.translate(0.0, -0.5, 0.0);
@@ -121,7 +124,9 @@ class MyCubeMap extends CGFobject {
         
         this.scene.popMatrix();
         
+
         //Displaying Back Quad
+
         this.scene.pushMatrix();
         
         this.scene.translate(0, 0, -0.5);
@@ -134,7 +139,9 @@ class MyCubeMap extends CGFobject {
         
         this.scene.popMatrix();
 
+
         //Displaying Left Quad
+
         this.scene.pushMatrix();
         
         this.scene.translate(-0.5 , 0, 0);
@@ -147,7 +154,9 @@ class MyCubeMap extends CGFobject {
         
         this.scene.popMatrix();
 
+
         //Displaying Right Quad
+
         this.scene.pushMatrix();
         
         this.scene.translate(0.5, 0, 0);
@@ -160,7 +169,9 @@ class MyCubeMap extends CGFobject {
         
         this.scene.popMatrix();
 
+
         //Displaying Front Quad
+
         this.scene.pushMatrix();
         
         this.scene.translate(0.0, 0.0, 0.5);

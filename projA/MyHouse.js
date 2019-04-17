@@ -18,6 +18,7 @@ class MyHouse extends CGFobject {
     }
     
     initMaterials() {
+
         this.roofMaterial = new CGFappearance(this.scene);
         this.roofMaterial.setAmbient(0.1, 0.1, 0.1, 1);
         this.roofMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
@@ -34,7 +35,6 @@ class MyHouse extends CGFobject {
         this.collumnMaterial.loadTexture('images/collumn.jpg');
         this.collumnMaterial.setTextureWrap('REPEAT', 'REPEAT');
     
-
         this.poolMaterial = new CGFappearance(this.scene);
         this.poolMaterial.setDiffuse(1, 1, 1, 1.0);
         this.poolMaterial.setSpecular(1, 1, 1, 1.0);
