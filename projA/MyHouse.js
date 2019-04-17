@@ -101,7 +101,7 @@ class MyHouse extends CGFobject {
 
         //Pool
         this.scene.pushMatrix();
-        this.scene.translate(1, -1, 10);
+        this.scene.translate(1, -0.9, 10);
         this.scene.rotate(-90*Math.PI/180,1,0,0);
         this.scene.scale(10, 10, 10); 
         this.poolMaterial.apply();

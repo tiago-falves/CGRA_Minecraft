@@ -15,7 +15,7 @@ class MyCubeMap extends CGFobject {
         this.rightQuad = new MyQuad(this.scene);
         this.backQuad = new MyQuad(this.scene);
         this.topQuad = new MyQuad(this.scene);
-        this.bottomQuad = new MyQuad(this.scene);
+        this.bottomQuad = new MyQuad(this.scene,[0, 10,10, 10,0, 0,10, 0]);
 
         //Initialize Textures
         this.frontTexture = frontTexture;

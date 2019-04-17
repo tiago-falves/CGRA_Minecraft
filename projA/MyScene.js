@@ -27,8 +27,9 @@ class MyScene extends CGFscene {
         this.treeGroupPatch = new MyTreeGroupPatch(this, 1.5, 0.25, 1.5, 1);
         this.voxelHill = new MyVoxelHill(this,6,'images/hill.jpg');
         this.voxelHill1 = new MyVoxelHill(this,4,'images/hill2.jpg');
+        this.floor = new MyQuad(this,[0, 10,10, 10,0, 0,10, 0]);
 
-        this.cubeMap = new MyCubeMap(this,50,'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/mp_deviladv/devils_advocate_dn.png');
+        this.cubeMap = new MyCubeMap(this,200,'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/mp_deviladv/devils_advocate_dn.png');
 
         //Objects connected to MyInterface
         this.displayAxis = true;
@@ -38,11 +39,13 @@ class MyScene extends CGFscene {
         this.displayTreeGroupPatch = true;
         this.displayTreeRowPatch = true;
         this.displayCubeMap = true;
+        this.displayFloor = true;
         this.lightSelected = 0;
 
         this.lightsType = ['Day Light', 'Night Light'];
 
         this.lightsId = { 'Day Light' : 0, 'Night Light' : 1};
+        this.initMaterials();
     }
 
     initCameras() {
@@ -55,6 +58,18 @@ class MyScene extends CGFscene {
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setShininess(10.0);
     }
+
+    initMaterials() {
+        //Front
+        this.floorMaterial = new CGFappearance(this);
+        this.floorMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.floorMaterial.setDiffuse(1, 1, 1, 1);
+        this.floorMaterial.setSpecular(0, 0, 0, 1);
+        this.floorMaterial.setShininess(10.0);
+        this.floorMaterial.loadTexture('images/floor.jpg');
+        this.floorMaterial.setTextureWrap('REPEAT', 'REPEAT');
+    }
+
 
     initLights() {
         this.setGlobalAmbientLight(0.3, 0.3, 0.3, 1.0);
@@ -145,63 +160,41 @@ class MyScene extends CGFscene {
        
         if(this.displayTreeRowPatch){
             this.pushMatrix();
-            
             this.translate(10,-1, 0.0);
-            
             this.treeRowPatch.display();
-            
             this.popMatrix();
 
             this.pushMatrix();
-            
             this.translate(0,-1, -10.0);
-            
             this.rotate(90*Math.PI/180,0,1,0);
-            
             this.treeRowPatch.display();
-           
             this.popMatrix();
         }
     
         if(this.displayTreeGroupPatch){
             this.pushMatrix();
-            
             this.translate(-0,-1, -18);
-            
             this.treeGroupPatch.display();
-            
             this.popMatrix();
 
             this.pushMatrix();
-            
             this.translate(-14,-1, -8);
-            
             this.treeGroupPatch.display();
-            
             this.popMatrix();
 
             this.pushMatrix();
-            
             this.translate(-12,-1, -18);
-            
             this.treeGroupPatch.display();
-            
             this.popMatrix();
 
             this.pushMatrix();
-            
             this.translate(19,-1, -9);
-            
             this.treeGroupPatch.display();
-            
             this.popMatrix();
 
             this.pushMatrix();
-            
             this.translate(19,-1,3);
-            
             this.treeGroupPatch.display();
-            
             this.popMatrix();
         }
 
@@ -211,53 +204,41 @@ class MyScene extends CGFscene {
             //this.translate(0, -1, 0)
             
             this.house.display();
-
             this.popMatrix();
         }
 
         if(this.displayMyVoxelHill){
             this.pushMatrix();
-<<<<<<< HEAD
             this.translate(15,-0.5, -19.0);
-=======
-            
-            this.translate(10,-0.5, -15.0);
-            
->>>>>>> 598949bebd6a5e9f32e03110ee5ce34ee957dd3c
             this.voxelHill.display();
-            
             this.popMatrix();
 
             this.pushMatrix();
-            
             this.translate(-20,-0.5, 15);
-            
             this.voxelHill.display();
-            
             this.popMatrix();
 
             this.pushMatrix();
-<<<<<<< HEAD
-            this.translate(15,-0.5, 19);
-=======
-            
-            this.translate(9,-0.5, 22);
-            
->>>>>>> 598949bebd6a5e9f32e03110ee5ce34ee957dd3c
+            this.translate(15,-1, 19);
             this.voxelHill1.display();
-            
             this.popMatrix();
         }
 
         if(this.displayCubeMap){
             this.pushMatrix();
-            
-            this.translate(0.0,23, 0.0);
-            
+            //this.translate(0.0,24, 0.0);
             this.cubeMap.display();
-            
             this.popMatrix();
-            
         }      
+        if (this.displayFloor){
+            this.pushMatrix();
+            this.translate(0.0, -0.5, 0.0);
+            this.rotate(-Math.PI / 2, 1.0, 0.0, 0.0);
+            this.scale(50,50,50);
+            this.floorMaterial.apply();
+            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
+            this.floor.display();
+            this.popMatrix();
+        }
     }
 }
