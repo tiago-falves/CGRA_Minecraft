@@ -158,251 +158,115 @@ class MyScene extends CGFscene {
         //Enable Textures
 
         this.enableTextures(this.enableTex);
-<<<<<<< HEAD
-        
 
-        //Draw Objects
-        
-=======
-
->>>>>>> 7f6de79919e42d007c61dc27f07e5492a8e199d3
         // Draw axis
         if (this.displayAxis)
             this.axis.display();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 7f6de79919e42d007c61dc27f07e5492a8e199d3
         //Update Lights
         this.lights[this.lightSelected].update();
 
         // ---- BEGIN Primitive drawing section
 
         //Displaying the Terrain Plain
+
         this.pushMatrix();
-        
         this.translate(0.0, -0.5, 0.0);
-        
         this.rotate(-Math.PI / 2, 1.0, 0.0, 0.0);
-        
         this.scale(65,65,65);
-        
-<<<<<<< HEAD
-        //Tree Row
-        if(this.displayTreeRowPatch){
-
-            //Displaying the First Tree Row
-            this.pushMatrix();
-            this.translate(0, 0, 24);
-            this.rotate(Math.PI/2, 0, 1, 0);
-            this.treeRowPatch.display();
-            this.popMatrix();
-
-            //Displaying the Second Tree Row
-            this.pushMatrix();
-            this.translate(0, 0, 20);
-            this.rotate(Math.PI/2, 0, 1, 0);
-            this.treeRowPatch.display();
-            this.popMatrix();
-        }
-    
-        //Tree Group
-        if(this.displayTreeGroupPatch){
-            //Displaying the First Tree Group
-            this.pushMatrix();
-            this.translate(0, 0, -18);
-            this.treeGroupPatch.display();
-            this.popMatrix();
-=======
         this.terrainMaterial.apply();
-        
         this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
-        
         this.terrain.display();
-        
         this.popMatrix();
+
        
         //Displaying the First Tree Row
         this.pushMatrix();
-        
         this.translate(0, 0, 24);
-        
         this.rotate(Math.PI/2, 0, 1, 0);
-        
         this.treeRowPatch.display();
-        
         this.popMatrix();
 
         //Displaying the Second Tree Row
         this.pushMatrix();
-        
         this.translate(0, 0, 20);
-        
         this.rotate(Math.PI/2, 0, 1, 0);
-        
         this.treeRowPatch.display();
-        
         this.popMatrix();
+
         
         //Displaying the First Tree Group
         this.pushMatrix();
-        
         this.translate(0, 0, -18);
-        
         this.treeGroupPatch.display();
-        
         this.popMatrix();
->>>>>>> 7f6de79919e42d007c61dc27f07e5492a8e199d3
 
         //Displaying the Second Tree Group
         this.pushMatrix();
-        
         this.translate(-15,0, -8);
-        
         this.treeGroupPatch.display();
-        
         this.popMatrix();
+
 
         //Displaying the Third Tree Group
         this.pushMatrix();
-        
         this.translate(-20,0, -18);
-        
         this.treeGroupPatch.display();
-        
         this.popMatrix();
 
         //Displaying the Forth Tree Group
         this.pushMatrix();
-        
         this.translate(19,0, 0);
-        
         this.treeGroupPatch.display();
-        
         this.popMatrix();
         
         //Displaying the Fifth Trre Group
         this.pushMatrix();
-        
         this.translate(19,0,15);
-        
         this.treeGroupPatch.display();
-        
         this.popMatrix();
         
         //Displaying the House
         this.pushMatrix();
-
         this.translate(0, 1, 0);
-            
-<<<<<<< HEAD
-            //Displaying the Fifth Tree Group
-            this.pushMatrix();
-            this.translate(19,0,15);
-            this.treeGroupPatch.display();
-            this.popMatrix();
-        }
-
-        //Display House
-        if (this.displayMyHouse){
-
-            this.pushMatrix();
-            this.translate(0, 1, 0);
-            this.house.display();
-            this.popMatrix();
-        }
-
-        //Display Voxel Hill
-
-        if(this.displayMyVoxelHill){
-            //Displaying the First Voxel Hill
-
-            this.pushMatrix();
-            this.translate(25, 0, -25.0);
-            this.voxelHill_1.display();
-            this.popMatrix();
-
-            //Displaying the Second Voxel Hill
-           
-            this.pushMatrix();
-            this.translate(-20, 0, 15);
-            this.voxelHill_1.display();
-            this.popMatrix();
-
-            //Displaying the Third Voxel Hill
-
-            this.pushMatrix();
-            this.translate(15, 0, 22);
-            this.voxelHill_2.display();
-=======
         this.house.display();
-        
         this.popMatrix();
         
         //Displaying the First Voxel Hill
         this.pushMatrix();
-            
         this.translate(25, 0, -25.0);
-        
         this.voxelHill_1.display();
-        
         this.popMatrix();
 
         //Displaying the Second Voxel Hill
         this.pushMatrix();
-
         this.translate(-20, 0, 15);
-        
         this.voxelHill_1.display();
-        
         this.popMatrix();
 
         //Displaying the Third Voxel Hill
         this.pushMatrix();
-        
         this.translate(15, 0, 22);
-        
         this.voxelHill_2.display();
-        
         this.popMatrix();
         
         //Displaying Map Cube if Day Light is Selected
         if (this.lightSelected == 0){
             this.pushMatrix();
-
             this.translate(0.0, 24, 0.0);
-
             this.cubeMapDay.display();
-
->>>>>>> 7f6de79919e42d007c61dc27f07e5492a8e199d3
             this.popMatrix();
-            
         }
-<<<<<<< HEAD
 
-        //Display Cube Map
-
-        if(this.displayCubeMap){
-=======
         //Displaying Map Cube if Night Light is Selected 
         else {
->>>>>>> 7f6de79919e42d007c61dc27f07e5492a8e199d3
             this.pushMatrix();
-
             this.translate(0.0, 24, 0.0);
-
             this.cubeMapNight.display();
-
             this.popMatrix();
-<<<<<<< HEAD
-        }     
-        //Display lantern
-=======
         }    
         
         //Displaying the Lantern
->>>>>>> 7f6de79919e42d007c61dc27f07e5492a8e199d3
         this.pushMatrix();
         this.translate(3, 0 , 3);
         this.lantern.display();
