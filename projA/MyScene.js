@@ -10,7 +10,6 @@ class MyScene extends CGFscene {
         super.init(application);
         this.initCameras();
         this.initLights();
-
         this.enableTex = true;
 
         //Background color
@@ -26,8 +25,8 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this);
         this.treeRowPatch = new MyTreeRowPatch(this, 1.5, 0.25, 1.5, 1);
         this.treeGroupPatch = new MyTreeGroupPatch(this, 1.5, 0.25, 1.5, 1);
-        this.voxelHill = new MyVoxelHill(this,4);
-        this.cubeMap = new MyCubeMap(this,30,'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/mp_deviladv/devils_advocate_dn.png');
+        this.voxelHill = new MyVoxelHill(this, 4);
+        this.cubeMap = new MyCubeMap(this, 30, 'images/mp_deviladv/devils_advocate_ft.png', 'images/mp_deviladv/devils_advocate_bk.png', 'images/mp_deviladv/devils_advocate_lf.png', 'images/mp_deviladv/devils_advocate_rt.png', 'images/mp_deviladv/devils_advocate_up.png', 'images/mp_deviladv/devils_advocate_dn.png');
 
         //Objects connected to MyInterface
         this.displayAxis = true;
@@ -37,24 +36,88 @@ class MyScene extends CGFscene {
         this.displayTreeGroupPatch = true;
         this.displayTreeRowPatch = true;
         this.displayCubeMap = true;
+        this.lightSelected = 0;
 
+        this.lightsType = ['Day Light', 'Night Light'];
+
+        this.lightsId = { 'Day Light' : 0, 'Night Light' : 1};
     }
-    initLights() {
-        this.setGlobalAmbientLight(0.3, 0.3, 0.3, 1.0);
-        this.lights[0].setPosition(15, 2, 5, 1);
-        this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
-        this.lights[0].enable();
-        this.lights[0].update();
-    }
+
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(30, 30, 30), vec3.fromValues(0, 0, 0));
     }
+
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
         this.setDiffuse(0.2, 0.4, 0.8, 1.0);
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setShininess(10.0);
     }
+
+    initLights() {
+        this.setGlobalAmbientLight(0.3, 0.3, 0.3, 1.0);
+
+        // Position for the 3 lights
+        this.lights[0].setPosition(5, 30, 5, 1);
+        this.lights[1].setPosition(5, 30 , 5, 1);
+        this.lights[2].setPosition(0, 2, 0);
+        
+        this.lights[0].setAmbient(1.0, 1.0, 1.0, 1.0);
+        this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
+        this.lights[0].setSpecular(1.0, 1.0, 1.0, 1.0);
+        this.lights[0].enable();
+        this.lights[0].update();
+
+        this.lights[1].setAmbient(0.1, 0.1, 1, 1.0);
+        this.lights[1].setDiffuse(0.1, 0.1, 0.1, 1.0);
+        this.lights[1].setConstantAttenuation(1.5);
+        this.lights[1].update();
+
+        this.lights[2].setAmbient(1, 1, 1, 1.0);
+        this.lights[2].setDiffuse(1, 1, 1, 1);
+        //this.lights[2].setQuadraticAttenuation(2);
+        //this.lights[2].setSpotExponent(1);
+        this.lights[2].setVisible(true);
+        this.lights[2].enable();
+        this.lights[2].update();
+    }
+
+    chooseLights() {
+
+        if (this.lightsType[this.lightSelected] == 'Day Light') {
+            this.setGlobalAmbientLight(0.3, 0.3, 0.3, 1.0);
+
+            this.lights[1].disable();
+            this.lights[1].update();
+
+            this.lights[2].disable();
+            this.lights[2].update();
+
+            this.lights[0].enable();
+            this.lights[0].update();
+        }
+
+        else if (this.lightsType[this.lightSelected] == 'Night Light') {
+            this.setGlobalAmbientLight(0.6196, 0.6745, 0.898, 1.0);
+
+            this.lights[0].disable();
+            this.lights[0].update();
+
+            this.lights[1].enable();
+            this.lights[1].update();
+
+            this.lights[2].enable();
+            this.lights[2].update();
+
+        }
+    }
+
+    updateLights(){
+        for (var i = 0; i < this.lights.length; i++){
+            this.lights[i].update();
+        }
+    }
+
     display() {
         // ---- BEGIN Background, camera and axis setup
         // Clear image and depth buffer everytime we update the scene
@@ -72,12 +135,14 @@ class MyScene extends CGFscene {
         //Apply default appearance
         //this.setDefaultAppearance();
 
+        //Update Lights
+        this.lights[this.lightSelected].update();
         // ---- BEGIN Primitive drawing section
        
         if(this.displayTreeRowPatch){
             this.pushMatrix();
            
-            this.translate(15, -2, 0.0);
+            this.translate(10, -2, 5);
            
             this.treeRowPatch.display();
            

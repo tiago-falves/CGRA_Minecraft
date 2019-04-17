@@ -27,7 +27,9 @@ class MyInterface extends CGFinterface {
         this.gui.add(this.scene, 'displayTreeGroupPatch').name('Display MyTreeGroupPatch');
         
         this.gui.add(this.scene, 'displayCubeMap').name('Display CubeMap');
-        
+
+        this.gui.add(this.scene, 'lightSelected', this.scene.lightsID).name('Selected Light').onChange(this.scene.chooseLights.bind(this.scene));
+
         return true;
     }
 }
