@@ -28,7 +28,7 @@ class MyScene extends CGFscene {
         this.voxelHill_1 = new MyVoxelHill(this, 7,'images/hill.jpg');
         this.voxelHill_2 = new MyVoxelHill(this, 5,'images/hill2.jpg');
         this.lantern = new MyLantern(this);
-        this.cubeMapDay = new MyCubeMap(this, 65, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/floor.jpg');
+        this.cubeMapDay = new MyCubeMap(this, 65, 'images/hills_ft.png', 'images/hills_bk.png', 'images/hills_lf.png', 'images/hills_rt.png', 'images/hills_up.png', 'images/hills_dn.png');
         this.cubeMapNight = new MyCubeMap(this, 65, 'images/purplenebula_ft.png', 'images/purplenebula_bk.png', 'images/purplenebula_lf.png', 'images/purplenebula_rt.png', 'images/purplenebula_up.png', 'images/purplenebula_dn.png' )
         this.terrain = new MyQuad(this,[0, 10,10, 10,0, 0,10, 0]);
 
