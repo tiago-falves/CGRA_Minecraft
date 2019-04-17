@@ -11,38 +11,45 @@ class MyLantern extends CGFobject {
         this.lamp = new MyCylinder(this.scene, 18, 8, 0.5, 0.15);
         this.prism = new MyPrism(this.scene, 8, 8, 0.5, 0.025);
         this.base = new MyQuad(this.scene);
+
+        this.initMaterials();
     }
+
     initMaterials() {
 
-        //Texture Leaves
-        this.leavesMaterial = new CGFappearance(this.scene);
-        this.leavesMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.leavesMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.leavesMaterial.setSpecular(0.1, 0.1, 0.1, 1);
-        this.leavesMaterial.setShininess(10.0);
-        this.leavesMaterial.loadTexture(this.treeTopTexture); 
-        this.leavesMaterial.setTextureWrap('REPEAT', 'REPEAT');
-
-        //Texture Leaves
-        this.trunkMaterial = new CGFappearance(this.scene);
-        this.trunkMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.trunkMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.trunkMaterial.setSpecular(0, 0, 0, 1);
-        this.trunkMaterial.setShininess(10.0);
-        this.trunkMaterial.loadTexture(this.truncTexture); 
-        this.trunkMaterial.setTextureWrap('REPEAT', 'REPEAT');
+        //Metalic Texture for the Extirios of the Lantern
+        this.metalicMaterial = new CGFappearance(this.scene);
+        this.metalicMaterial.setAmbient(0.25, 0.25, 0.25, 1);
+        this.metalicMaterial.setDiffuse(0.25, 0.25, 0.25, 1);
+        this.metalicMaterial.setSpecular(1, 1, 1, 1);
+        this.metalicMaterial.setShininess(10.0);
+    
+        //TMaterial for the Lamp
+        this.lampMaterial = new CGFappearance(this.scene);
+        this.lampMaterial.setAmbient(0.792, 0.7333, 0.2117, 1);
+        this.lampMaterial.setDiffuse(0.792, 0.7333, 0.2117, 1);
+        this.lampMaterial.setSpecular(0, 0, 0, 1);
+        this.lampMaterial.setShininess(10.0);
     }
 
     
     display(){
 
+
         //Lamp Displaying
         this.scene.pushMatrix();
         
+        this.lampMaterial.apply();
+
         this.lamp.display();
         
         this.scene.popMatrix();
         
+        //Aplying Metalic Material
+        this.scene.pushMatrix();
+
+        this.metalicMaterial.apply();
+
         //Prism 1 Displaying
         this.scene.pushMatrix();
         
@@ -103,5 +110,6 @@ class MyLantern extends CGFobject {
 
         this.scene.popMatrix();
         
+        this.scene.popMatrix();
     }
 }
