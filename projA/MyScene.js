@@ -173,7 +173,7 @@ class MyScene extends CGFscene {
         
         this.terrainMaterial.apply();
         
-        //this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
         
         this.terrain.display();
         
