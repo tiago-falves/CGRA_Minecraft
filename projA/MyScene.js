@@ -95,7 +95,7 @@ class MyScene extends CGFscene {
         this.lights[2].setAmbient(1, 1, 1, 1.0);
         this.lights[2].setDiffuse(1, 1, 1, 1);
         this.lights[2].setSpecular(1, 1, 1, 1);
-        this.lights[2].setQuadraticAttenuation(2);
+        this.lights[2].setQuadraticAttenuation(1);
         this.lights[2].setSpotExponent(1);
         this.lights[2].setVisible(true);
         this.lights[2].update();
@@ -116,7 +116,7 @@ class MyScene extends CGFscene {
             this.lights[0].update();
         }
 
-        else if (this.lightSelected == 'Night Light') {
+        else {
             this.setGlobalAmbientLight(0.6196, 0.6745, 0.898, 1.0);
 
             this.lights[0].disable();
@@ -203,26 +203,26 @@ class MyScene extends CGFscene {
 
         //Displaying the Second Tree Group
         this.pushMatrix();
-        this.translate(-15,0, -8);
+        this.translate(-15, 0, -8);
         this.treeGroupPatch.display();
         this.popMatrix();
 
 
         //Displaying the Third Tree Group
         this.pushMatrix();
-        this.translate(-20,0, -18);
+        this.translate(-20, 0, -18);
         this.treeGroupPatch.display();
         this.popMatrix();
 
         //Displaying the Forth Tree Group
         this.pushMatrix();
-        this.translate(19,0, 0);
+        this.translate(19, 0, 0);
         this.treeGroupPatch.display();
         this.popMatrix();
         
         //Displaying the Fifth Trre Group
         this.pushMatrix();
-        this.translate(19,0,15);
+        this.translate(19, 0, 15);
         this.treeGroupPatch.display();
         this.popMatrix();
         
@@ -268,7 +268,7 @@ class MyScene extends CGFscene {
         
         //Displaying the Lantern
         this.pushMatrix();
-        this.translate(3, 0 , 3);
+        this.translate(3, 0, 3);
         this.lantern.display();
         this.popMatrix();
     }
